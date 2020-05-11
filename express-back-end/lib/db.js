@@ -15,5 +15,9 @@ if (process.env.DATABASE_URL) {
 
 // PG database client/connection setup
 const { Pool } = require('pg');
-const pool = new Pool(dbParams);
-pool.connect();
+const db = new Pool(dbParams);
+db.connect();
+
+module.exports = {
+  db
+}

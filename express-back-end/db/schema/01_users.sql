@@ -6,5 +6,6 @@ CREATE TABLE users (
   name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   phone varchar(50),
-  avatar varchar(255)
+  avatar varchar(255),
+  push_subscription jsonb
 );
