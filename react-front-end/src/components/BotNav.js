@@ -9,8 +9,7 @@ import ListIcon from '@material-ui/icons/List';
 import PersonIcon from '@material-ui/icons/Person';
 import { makeStyles } from '@material-ui/core/styles';
 
-
-export default function LinkButtons() {
+export default function BotNav() {
   const useStyles = makeStyles({
     root: {
       width: 500,

@@ -2,14 +2,12 @@ import React from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import LinkButtons from './LinkButtons';
+import Search from './Search/Search';
+import Listings from './Listings/Listings';
+import Profile from './Profile/Profile';
+import Bookings from './Bookings/Bookings';
 
-import Search from '../Search/Search';
-import Listings from '../Listings/Listings';
-import Profile from '../Profile/Profile';
-import Bookings from '../Bookings/Bookings';
-
-export default function BottomNav() {
+export default function Routes() {
 
   return (
     <Router>
@@ -26,8 +24,10 @@ export default function BottomNav() {
         <Route path="/profile">
           <Profile />
         </Route>
+        <Route path="/" exact>
+          <Search />
+        </Route>
       </Switch>
-      <LinkButtons />
     </Router>
   );
 };
