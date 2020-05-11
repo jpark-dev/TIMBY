@@ -27,17 +27,15 @@ App.use(BodyParser.json());
 App.use(Express.static('public'));
 App.use(cors())
 
+// Generate and set private and public push keys
 webpush.setVapidDetails(process.env.WEB_PUSH_CONTACT, process.env.PUBLIC_VAPID_KEY, process.env.PRIVATE_VAPID_KEY)
-
-// const db = require('/lib/db.js');
-// db.connect();
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
 
-// PUSH NOTIFICATIONS
+// PUSH NOTIFICATION SUBSCRIPTION
 App.post('/notifications/subscribe', (req, res) => {
   const subscription = req.body.subscription;
   console.log("hit the subscribe route!");
@@ -57,8 +55,8 @@ App.post('/notifications/subscribe', (req, res) => {
   console.log(subscription);
 
   const payload = JSON.stringify({
-    title: 'Hello!',
-    body: 'It works.',
+    title: 'TIMBY',
+    body: 'Welcome to TIMBY!',
   })
 
   webpush.sendNotification(subscription, payload)
@@ -73,13 +71,13 @@ App.post('/notifications/subscribe', (req, res) => {
 
 // SEND NOTIFICATION TO USER
 App.post("/notifications/send/:id", (req, res) => {
-  console.log("hit post notification route!");
-  console.log(req.body);
-  console.log(req.params.id);
+  console.log("Hit send notification route!");
+  // console.log(req.body);
+  // console.log(req.params.id);
 
   const payload = JSON.stringify({
     title: 'TIMBY',
-    body: 'Sent from userid send route!',
+    body: req.body.text
   })
 
   getPushSubscription(req.params.id)
@@ -87,24 +85,25 @@ App.post("/notifications/send/:id", (req, res) => {
     .then(push_subscription => {
       webpush.sendNotification(push_subscription, payload)
       .then(result => {;
-        console.log(`notification sent from server to user ${req.params.id}`);
-        console.log(result);
+        console.log(`Notification sent from server to user ${req.params.id}`);
+        // console.log(result);
+        res.send(`Notification sent from server to user ${req.params.id}`);
       })
       .catch(e => console.log(e.stack))
     })
 });
 
 // LOGIN
-App.post("/login", (req, res) => {
-  console.log("login route hit!");
-  getUserIDByEmail(req.body.username)
-    .then(data => data.rows[0].id)
-    .then(id => {
-      console.log(`successfully logged in as user ${id}`);
-      res.json({status: 200, userID: id});
-    })
-    .catch(error => console.log(error));
-});
+// App.post("/login", (req, res) => {
+//   console.log("login route hit!");
+//   getUserIDByEmail(req.body.username)
+//     .then(data => data.rows[0].id)
+//     .then(id => {
+//       console.log(`successfully logged in as user ${id}`);
+//       res.json({status: 200, userID: id});
+//     })
+//     .catch(error => console.log(error));
+// });
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
