@@ -25,6 +25,9 @@ export default function Routes() {
         <Route path="/profile">
           <Profile />
         </Route>
+        <Route path="/" exact>
+          <Search />
+        </Route>
       </Switch>
     </Router>
   );
