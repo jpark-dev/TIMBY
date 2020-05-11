@@ -10,6 +10,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
+import FeaturedTour from './FeaturedTour';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +32,26 @@ const useStyles = makeStyles((theme) => ({
     opacity: '70%',
   },
 }));
+
+
+// const featuredTours = [
+//   {
+//     title: 'Cu tour',
+//     date: 'Nov 12',
+//     description:
+//       'This is a wider card with supporting text below as a natural lead-in to additional content.',
+//     image: 'https://source.unsplash.com/random',
+//     imageText: 'Image Text',
+//   },
+//   {
+//     title: 'Post title',
+//     date: 'Nov 11',
+//     description:
+//       'This is a wider card with supporting text below as a natural lead-in to additional content.',
+//     image: 'https://source.unsplash.com/random',
+//     imageText: 'Image Text',
+//   },
+// ];
 
 export default function Profile() {
 
@@ -52,27 +75,24 @@ export default function Profile() {
         </section>
       </header>
       <main>
-        <div>
-          <Grid item xs={4}>
-            <Paper className={classes.paper}>Profile photo </Paper>
+        <Grid item xs={4}>
+          <Paper className={classes.paper}>Profile photo </Paper>
+        </Grid>
+        <Grid item xs={8}>
+          <Grid>
+            <Paper className={classes.paper}>Harry Potter </Paper>
+            <Paper className={classes.paper}>4.2/5 </Paper>
+            <Paper className={classes.paper}>harry@potter.com </Paper>
           </Grid>
-          <Grid item xs={8}>
-            <Grid>
-              <Paper className={classes.paper}>Harry Potter </Paper>
-              <Paper className={classes.paper}>4.2/5 </Paper>
-              <Paper className={classes.paper}>harry@potter.com </Paper>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>Tour 1 </Paper>
-            <Paper className={classes.paper}>Tour 2 </Paper>
-            <Paper className={classes.paper}>Tour 3 </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>Logout </Paper>
-          </Grid>
-        </div>
-
+        </Grid>
+        {/* <Grid container spacing={4}>
+          {featuredTours.map(tour => ( 
+            <FeaturedTour key={tour.title} tour={tour} />
+          ))}
+        </Grid> */}
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>Logout </Paper>
+        </Grid>
       </main>
     </>
   )
