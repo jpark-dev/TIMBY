@@ -11,7 +11,6 @@ import Hidden from '@material-ui/core/Hidden';
 
 import PropTypes from 'prop-types';
 
-
 const useStyles = makeStyles({
   card: {
     display: 'flex',
@@ -40,11 +39,8 @@ export default function FeaturedTour(props) {
               <Typography variant="subtitle1" color="textSecondary">
                 {tour.date}
               </Typography>
-              <Typography variant="subtitle1" paragraph>
+              <Typography variant="subtitle1">
                 {tour.description}
-              </Typography>
-              <Typography variant="subtitle1" color="primary">
-                Continue reading...
               </Typography>
             </CardContent>
           </div>
