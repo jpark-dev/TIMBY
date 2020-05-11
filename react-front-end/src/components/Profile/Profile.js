@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,14 +13,12 @@ import Typography from '@material-ui/core/Typography';
 
 import FeaturedTour from './FeaturedTour';
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(0),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
@@ -30,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroImg: {
     width: '100%',
+    padding: '16px 0px',
     opacity: '70%',
   },
   submit: {
@@ -73,36 +72,41 @@ export default function Profile() {
         </Toolbar>
       </AppBar>
       <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <section>
-            <img className={classes.heroImg} src="https://img.wallpapersafari.com/desktop/1920/1080/94/56/qwzhmC.jpg"/>
-          </section>
-        </div>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>Profile photo </Paper>
-        </Grid>
-        <Grid item xs={8}>
-          <Grid>
-            <Paper className={classes.paper}>Harry Potter </Paper>
-            <Paper className={classes.paper}>4.2/5 </Paper>
-            <Paper className={classes.paper}>harry@potter.com </Paper>
+        
+        <Container>
+          {/* Hero unit */}
+          <div className={classes.heroContent}>
+            <section>
+              <img className={classes.heroImg} src="https://img.wallpapersafari.com/desktop/1920/1080/94/56/qwzhmC.jpg" alt="background"/>
+            </section>
+          </div>
+          {/* <Grid item xs={4}>
+            <Paper className={classes.paper}>Profile photo </Paper>
           </Grid>
-        </Grid>
-        <Grid container spacing={4}>
-          {featuredTours.map(tour => ( 
-            <FeaturedTour key={tour.title} tour={tour} />
-          ))}
-        </Grid>
-        <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-          >
-            Logout
-        </Button>
+          <Grid item xs={8}>
+            <Grid>
+              <Paper className={classes.paper}>Harry Potter </Paper>
+              <Paper className={classes.paper}>4.2/5 </Paper>
+              <Paper className={classes.paper}>harry@potter.com </Paper>
+            </Grid>
+          </Grid> */}
+          <Grid>
+            {featuredTours.map(tour => ( 
+              <FeaturedTour key={tour.title} tour={tour} />
+            ))}
+          </Grid>
+          <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+            >
+              Logout
+          </Button>
+        </Container>
+
+        
       </main>
     </>
   )
