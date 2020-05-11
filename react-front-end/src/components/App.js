@@ -19,10 +19,10 @@ export default function App() {
 
   return (
     <div className="App">
-      {/* <h1>{msg}</h1>
+      <h1>{msg}</h1>
       <button onClick={fetchData} >
         Fetch Data
-      </button> */}
+      </button>
       <BottomNav />
     </div>
   )
