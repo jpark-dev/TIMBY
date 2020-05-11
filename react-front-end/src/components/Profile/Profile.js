@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
@@ -31,27 +32,30 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     opacity: '70%',
   },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 
-// const featuredTours = [
-//   {
-//     title: 'Cu tour',
-//     date: 'Nov 12',
-//     description:
-//       'This is a wider card with supporting text below as a natural lead-in to additional content.',
-//     image: 'https://source.unsplash.com/random',
-//     imageText: 'Image Text',
-//   },
-//   {
-//     title: 'Post title',
-//     date: 'Nov 11',
-//     description:
-//       'This is a wider card with supporting text below as a natural lead-in to additional content.',
-//     image: 'https://source.unsplash.com/random',
-//     imageText: 'Image Text',
-//   },
-// ];
+const featuredTours = [
+  {
+    title: 'Cu tour',
+    date: 'Nov 12',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random',
+    imageText: 'Image Text',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random',
+    imageText: 'Image Text',
+  },
+];
 
 export default function Profile() {
 
@@ -68,13 +72,13 @@ export default function Profile() {
           </Typography>
         </Toolbar>
       </AppBar>
-      {/* Hero unit */}
-      <header className={classes.heroContent}>
-        <section>
-          <img className={classes.heroImg} src="https://img.wallpapersafari.com/desktop/1920/1080/94/56/qwzhmC.jpg"/>
-        </section>
-      </header>
       <main>
+        {/* Hero unit */}
+        <div className={classes.heroContent}>
+          <section>
+            <img className={classes.heroImg} src="https://img.wallpapersafari.com/desktop/1920/1080/94/56/qwzhmC.jpg"/>
+          </section>
+        </div>
         <Grid item xs={4}>
           <Paper className={classes.paper}>Profile photo </Paper>
         </Grid>
@@ -85,14 +89,20 @@ export default function Profile() {
             <Paper className={classes.paper}>harry@potter.com </Paper>
           </Grid>
         </Grid>
-        {/* <Grid container spacing={4}>
+        <Grid container spacing={4}>
           {featuredTours.map(tour => ( 
             <FeaturedTour key={tour.title} tour={tour} />
           ))}
-        </Grid> */}
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>Logout </Paper>
         </Grid>
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="secondary"
+            className={classes.submit}
+          >
+            Logout
+        </Button>
       </main>
     </>
   )
