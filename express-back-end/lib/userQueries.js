@@ -12,6 +12,7 @@ const getUsers = () => {
 
 module.exports.getUsers = getUsers;
 
+
 const getUser = (id) => {
   return db.query(`
   SELECT *
@@ -24,3 +25,6 @@ const getUser = (id) => {
 };
 
 module.exports.getUser = getUser;
+
+
+
