@@ -18,7 +18,7 @@ const webpush = require('web-push')
 const { addPushSubscription, getPushSubscription, getUserIDByEmail } = require('./lib/userQueries');
 const tourQueries = require('./lib/tourQueries');
 const bookingQueries = require('./lib/bookingQueries');
-const notificationQueries = require('./lib/notificationQueries');
+const { getNotificationsForUser, addNotification } = require('./lib/notificationQueries');
 const mediaQueries = require('./lib/mediaQueries');
 
 // Express Configuration
@@ -35,14 +35,25 @@ App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
 
+App.get('/notifications/:id', (req, res) => {
+  console.log("Hit the get notifications route!");
+  getNotificationsForUser(req.params.id)
+    .then(data => data.rows)
+    .then(rows => {
+      // console.log(rows);
+      res.send(rows);
+    })
+    .catch(error => console.log(error));
+}); 
+
 // PUSH NOTIFICATION SUBSCRIPTION
 App.post('/notifications/subscribe', (req, res) => {
   const subscription = req.body.subscription;
-  console.log("hit the subscribe route!");
-  console.log(req.body);
+  // console.log("hit the subscribe route!");
+  // console.log(req.body);
 
   if (req.body.userID) {
-    console.log("attempting to add push subscription to db");
+    // console.log("attempting to add push subscription to db");
     addPushSubscription(req.body.userID, subscription)
       .then((data) => {
         console.log(`New push subscription added to user ${data.rows[0].id}`);
@@ -52,7 +63,7 @@ App.post('/notifications/subscribe', (req, res) => {
       })
   }
 
-  console.log(subscription);
+  // console.log(subscription);
 
   const payload = JSON.stringify({
     title: 'TIMBY',
@@ -61,8 +72,8 @@ App.post('/notifications/subscribe', (req, res) => {
 
   webpush.sendNotification(subscription, payload)
     .then(result => {;
-      console.log("notification sent from server!");
-      console.log(result);
+      console.log("Notification sent from server!");
+      // console.log(result);
     })
     .catch(e => console.log(e.stack))
 
@@ -74,23 +85,30 @@ App.post("/notifications/send/:id", (req, res) => {
   console.log("Hit send notification route!");
   // console.log(req.body);
   // console.log(req.params.id);
+  addNotification(req.params.id, req.body.text)
+    .then(() => {
 
-  const payload = JSON.stringify({
-    title: 'TIMBY',
-    body: req.body.text
-  })
+      // console.log("Notification added to database!");
 
-  getPushSubscription(req.params.id)
-    .then(data => data.rows[0].push_subscription)
-    .then(push_subscription => {
-      webpush.sendNotification(push_subscription, payload)
-      .then(result => {;
-        console.log(`Notification sent from server to user ${req.params.id}`);
-        // console.log(result);
-        res.send(`Notification sent from server to user ${req.params.id}`);
+      const payload = JSON.stringify({
+        title: 'TIMBY',
+        body: req.body.text
       })
-      .catch(e => console.log(e.stack))
+    
+      getPushSubscription(req.params.id)
+        .then(data => data.rows[0].push_subscription)
+        .then(push_subscription => {
+          webpush.sendNotification(push_subscription, payload)
+          .then(result => {;
+            console.log(`Notification sent from server to user ${req.params.id}`);
+            // console.log(result);
+            res.send(`Notification sent from server to user ${req.params.id}`);
+          })
+          .catch(e => console.log(e.stack))
+        })
+
     })
+
 });
 
 // LOGIN
