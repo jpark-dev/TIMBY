@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const webpush = require('web-push');
 
 module.exports = (db) => {
   // FETCH ALL NOTIFICATIONS FOR A USER
   router.get("/:id", (req, res) => {
+    // console.log("Hit get notifications route!");
     db.getNotificationsForUser(req.params.id)
       .then(data => data.rows)
       .then(rows => {
+        // console.log("ALL NOTIFICATIONS", rows);
         res.send(rows);
       })
       .catch(err => {
