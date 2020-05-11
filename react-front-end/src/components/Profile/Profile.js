@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
+import BotNav from '../BotNav';
 import FeaturedTour from './FeaturedTour';
 
 const useStyles = makeStyles((theme) => ({
@@ -39,18 +40,18 @@ const useStyles = makeStyles((theme) => ({
 
 const featuredTours = [
   {
-    title: 'Cu tour',
-    date: 'Nov 12',
+    title: 'UBC campus tour',
+    date: '10/May/2020',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'A social distancing tour in UBC campus.',
     image: 'https://source.unsplash.com/random',
     imageText: 'Image Text',
   },
   {
-    title: 'Post title',
-    date: 'Nov 11',
+    title: 'Romantic Whistler',
+    date: '15/Jan/2020',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'Meet your soulmate in snowy Whistler!',
     image: 'https://source.unsplash.com/random',
     imageText: 'Image Text',
   },
@@ -72,8 +73,7 @@ export default function Profile() {
         </Toolbar>
       </AppBar>
       <main>
-        
-        <Container>
+        <Container MaxWidth='lg'>
           {/* Hero unit */}
           <div className={classes.heroContent}>
             <section>
@@ -90,7 +90,7 @@ export default function Profile() {
               <Paper className={classes.paper}>harry@potter.com </Paper>
             </Grid>
           </Grid> */}
-          <Grid>
+          <Grid container spacing={4}>
             {featuredTours.map(tour => ( 
               <FeaturedTour key={tour.title} tour={tour} />
             ))}
@@ -105,9 +105,10 @@ export default function Profile() {
               Logout
           </Button>
         </Container>
-
-        
       </main>
+      <footer>
+        <BotNav />
+      </footer>
     </>
   )
 };
