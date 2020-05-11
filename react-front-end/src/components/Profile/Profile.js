@@ -6,6 +6,10 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +33,15 @@ export default function Profile() {
 
   return(
     <>
+    {/* CssBaseline globally resets css just like normalize.css */}
     <CssBaseline />
+      <AppBar position="relative">
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+            User Profile
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Container>
         <Grid item xs={12}>
           <img className={classes.img} src="https://img.wallpapersafari.com/desktop/1920/1080/94/56/qwzhmC.jpg"/>
