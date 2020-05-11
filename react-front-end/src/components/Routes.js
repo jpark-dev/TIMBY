@@ -6,7 +6,6 @@ import Search from './Search/Search';
 import Listings from './Listings/Listings';
 import Profile from './Profile/Profile';
 import Bookings from './Bookings/Bookings';
-import BotNav from './BotNav';
 
 export default function Routes() {
 

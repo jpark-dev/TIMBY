@@ -1,7 +1,95 @@
 import React from 'react';
 
-export default function Search () {
+import { makeStyles } from '@material-ui/core/styles';
+
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+import BotNav from '../BotNav';
+import FeaturedTour from '../Commons/FeaturedTour';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(0),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    // padding: theme.spacing(2, 0),
+  },
+  heroImg: {
+    width: '100%',
+    padding: '16px 0px',
+    opacity: '70%',
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+
+const featuredTours = [
+  {
+    title: 'UBC campus tour',
+    date: '10/May/2020',
+    description:
+      'A social distancing tour in UBC campus.',
+    image: 'https://source.unsplash.com/random',
+    imageText: 'Image Text',
+  },
+  {
+    title: 'Romantic Whistler',
+    date: '15/Jan/2020',
+    description:
+      'Meet your soulmate in snowy Whistler!',
+    image: 'https://source.unsplash.com/random',
+    imageText: 'Image Text',
+  },
+];
+
+export default function Search() {
+
+  const classes = useStyles();
+
   return(
-    <h1>Search Route!</h1>
+    <>
+      {/* CssBaseline globally resets css just like normalize.css */}
+      <CssBaseline />
+      <AppBar position="relative">
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+            Search a Tour
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <main>
+        <Container>
+          {/* Hero unit */}
+          <div className={classes.heroContent}>
+            <section>
+              <img className={classes.heroImg} src="https://img.wallpapersafari.com/desktop/1920/1080/94/56/qwzhmC.jpg" alt="background"/>
+            </section>
+          </div>
+          <Grid container spacing={4}>
+            {featuredTours.map(tour => (
+              <FeaturedTour key={tour.title} tour={tour} />
+            ))}
+          </Grid>
+
+        </Container>
+      </main>
+      <footer>
+        <BotNav />
+      </footer>
+    </>
   )
 };
