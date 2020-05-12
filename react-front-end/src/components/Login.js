@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import notifyUser from '../helpers/notifyUser';
 import fetchNotificationsForUser from '../helpers/fetchNotificationsForUser';
 
-
+// THIS COMPONENT SHOULD NOT BE USED. IT SIMPLY DEMONSTRATES HOW TO FETCH AND SEND NOTIFICATIONS
 const Login = (props) => {
   const [notifications, setNotifications] = useState([]);
   
