@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
+  const [title, setTitle] = React.useState('TIMBY');
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -71,27 +72,27 @@ export default function App() {
     >
       <List>
         <Link to="/profile" className={classes.link} >
-          <ListItem button key='profile'>
+          <ListItem button key='profile' onClick={() => { setTitle('Profile') }}>
             <ListItemIcon><AccountCircleIcon /></ListItemIcon>
             <ListItemText primary='Profile' />
           </ListItem>
         </Link>
         <Link to="/search" className={classes.link} >
-          <ListItem button key='search'>
+          <ListItem button key='search' onClick={() => { setTitle('Search') }}>
             <ListItemIcon><SearchIcon /></ListItemIcon>
-            <ListItemText primary='search' />
+            <ListItemText primary='Search' />
           </ListItem>
         </Link>
         <Link to="/bookings" className={classes.link} >
-          <ListItem button key='bookings'>
+          <ListItem button key='bookings' onClick={() => { setTitle('Bookings') }}>
             <ListItemIcon><BookmarkIcon /></ListItemIcon>
-            <ListItemText primary='bookings' />
+            <ListItemText primary='Bookings' />
           </ListItem>
         </Link>
         <Link to="/listings" className={classes.link} >
-          <ListItem button key='listings'>
+          <ListItem button key='listings' onClick={() => { setTitle('Listings') }}>
             <ListItemIcon><StoreIcon /></ListItemIcon>
-            <ListItemText primary='listings' />
+            <ListItemText primary='Listings' />
           </ListItem>
         </Link>
       </List>
@@ -107,7 +108,7 @@ export default function App() {
             {list()}
           </Drawer>
           <Typography variant="h6" className={classes.title}>
-            TIMBY
+            {title}
           </Typography>
           <IconButton className={classes.menuButton}><PersonIcon /></IconButton>
           <IconButton className={classes.menuButton}><NotificationsIcon /></IconButton>
