@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './App.css';
 import Routes from './Routes';
 
-export default function App () {
+export default function App() {
   // const [msg, setMsg] = useState("Click the button to load data!");
-  
+
   // const fetchData = () => {
   //   axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
   //   .then((response) => {
@@ -14,7 +13,7 @@ export default function App () {
 
   //     console.log(response.data.message) // Just the message
   //     setMsg(response.data.message)
-  //   }) 
+  //   })
   // };
 
   return (
