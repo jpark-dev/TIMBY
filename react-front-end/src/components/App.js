@@ -100,11 +100,6 @@ export default function App() {
   );
 
   return (
-<<<<<<< HEAD
-    <>
-      <Routes />
-    </>
-=======
     <main>
       <AppBar position="static" className={classes.transparent}>
         <Toolbar>
@@ -128,6 +123,5 @@ export default function App() {
         {/* <Route component={ErrorComponent} /> */}
       </Switch>
     </main>
->>>>>>> feature/drawer-navigation
   );
 };
