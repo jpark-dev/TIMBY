@@ -1,4 +1,5 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,21 +10,31 @@ import Typography from '@material-ui/core/Typography';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import StarIcon from '@material-ui/icons/Star';
+import ExploreIcon from '@material-ui/icons/Explore';
+
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: 'rgba(192,192,192,0.2)',
+    backgroundImage: "url(https://www.transparenttextures.com/patterns/sandpaper.png)"
+  }
+});
 
 const TourCard = (props) => {
+  const classes = useStyles();
+
   return (
-    <Card>
+    <Card className={classes.root}>
       <CardHeader
-        avatar={<Avatar aria-label="tour guide avatar">T</Avatar>}
-        title="Tour de Breweries"
-        subheader="May 22, 2020"
+        avatar={<Avatar aria-label="tour guide avatar" src="https://material-ui.com/static/images/avatar/1.jpg" />}
+        title={props.title}
+        subheader={props.date}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          Short description about the tour / event and what it entails.
+          {props.description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions>
         <IconButton aria-label="price">
           <LocalOfferIcon /> {props.price}
         </IconButton>
@@ -32,6 +43,9 @@ const TourCard = (props) => {
         </IconButton>
         <IconButton aria-label="rating">
           <StarIcon /> {props.rating}
+        </IconButton>
+        <IconButton aria-label="delete" onClick={() => props.toggleMap()} >
+          <ExploreIcon />
         </IconButton>
       </CardActions>
     </Card>
