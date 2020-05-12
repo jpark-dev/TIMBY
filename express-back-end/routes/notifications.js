@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const webpush = require('web-push');
 
 module.exports = (db) => {
-  router.get("/:notification_id", (req, res) => {
-    db.getNotification(req.params.notification_id)
-      .then(notification => {
-        res.json({ notification });
+  // FETCH ALL NOTIFICATIONS FOR A USER
+  router.get("/:id", (req, res) => {
+    db.getNotificationsForUser(req.params.id)
+      .then(data => data.rows)
+      .then(rows => {
+        res.send(rows);
       })
       .catch(err => {
         res
@@ -14,16 +17,59 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/user/:user_id", (req, res) => {
-    db.getNotificationByUser(req.params.user_id)
-      .then(notifications => {
-        res.json({ notifications });
+  // SUBSCRIBE USER TO PUSH NOTIFICATIONS
+  router.post('/subscribe', (req, res) => {
+    const subscription = req.body.subscription;
+  
+    if (req.body.userID) {
+      db.addPushSubscription(req.body.userID, subscription)
+        .then((data) => {
+          console.log(`New push subscription added to user ${data.rows[0].id}`);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+  
+    const payload = JSON.stringify({
+      title: 'TIMBY',
+      body: 'Welcome to TIMBY!',
+    })
+  
+    webpush.sendNotification(subscription, payload)
+      .then(result => {;
+        console.log("Notification sent from server!");
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+      .catch(e => console.log(e.stack))
+      
+    // Indicate successful response to client
+    res.status(200).json({'success': true});
   });
+
+  // SEND NOTIFICATION TO USER
+  router.post("/send/:id", (req, res) => {
+    db.addNotification(req.params.id, req.body.text)
+      .then(() => {
+  
+        const payload = JSON.stringify({
+          title: 'TIMBY',
+          body: req.body.text
+        })
+      
+        db.getPushSubscription(req.params.id)
+          .then(data => data.rows[0].push_subscription)
+          .then(push_subscription => {
+            webpush.sendNotification(push_subscription, payload)
+            .then(result => {
+              console.log(`Notification sent from server to user ${req.params.id}`);
+              res.send(`Notification sent from server to user ${req.params.id}`);
+            })
+            .catch(e => console.log(e.stack))
+          })
+  
+      })
+  
+  });
+
   return router;
 };
