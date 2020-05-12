@@ -6,7 +6,6 @@ import Search from './Search/Search';
 import Listings from './Listings/Listings';
 import Profile from './Profile/Profile';
 import Bookings from './Bookings/Bookings';
-import Login from './Login';
 
 export default function Routes() {
 
@@ -27,7 +26,6 @@ export default function Routes() {
         </Route>
         <Route path="/" exact>
           <Search />
-          <Login />
         </Route>
       </Switch>
     </Router>
