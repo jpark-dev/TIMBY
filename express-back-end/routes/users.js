@@ -26,5 +26,17 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/profile/:user_id", (req, res) => {
+    db.getUserProfile(req.params.user_id)
+      .then(user => {
+        res.json({ user });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };
