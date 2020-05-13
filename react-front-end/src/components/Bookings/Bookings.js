@@ -20,7 +20,8 @@ export default function Bookings () {
       {bookings.map(booking => (
         <ImgMediaCard key={booking.id} {...booking} />
       ))}
-      <button onClick={() => requestBooking(1, localStorage.getItem('userID')).then(res => res)}>Book Tour 1</button>
+      <button onClick={() => requestBooking(1, 1, 7, "Tour de Breweries").then(res => res)}>Book Tour 1</button>
     </>
   )
 };
+
