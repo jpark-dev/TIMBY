@@ -7,7 +7,7 @@ CREATE TABLE tours (
   description text,
   city varchar(255) NOT NULL,
   long_lat varchar(255) NOT NULL,
-  date_time date NOT NULL,
+  date_time TIMESTAMP NOT NULL,
   duration integer NOT NULL,
   min_users integer NOT NULL,
   max_users integer NOT NULL,
