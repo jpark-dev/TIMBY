@@ -2,6 +2,30 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+  router.post("/", (req, res) => {
+    db.createBooking(req.body.tourID, req.body.userID)
+      .then(booking => {
+        res.json({ booking });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.post("/:booking_id", (req, res) => {
+    db.updateBooking(req.params.booking_id, req.body.status)
+      .then(booking => {
+        res.json({ booking });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.get("/:booking_id", (req, res) => {
     db.getBooking(req.params.booking_id)
       .then(booking => {
