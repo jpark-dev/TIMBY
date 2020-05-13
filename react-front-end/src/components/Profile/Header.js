@@ -8,7 +8,9 @@ import { faEnvelopeOpenText, faRoute } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles(theme => ({
+  
+}));
 
 export default function Header(props) {
   const classes = useStyles();
@@ -44,4 +46,4 @@ export default function Header(props) {
       </Container>
     </>
   );
-}
+};

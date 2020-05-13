@@ -4,25 +4,26 @@ import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 
-import Header from './Header';
+import Header from "./Header";
 import getUserProfile from "../../helpers/getUserProfile";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
   background: {
     backgroundSize: "cover",
-    fontFamily: "verdana"
+    fontFamily: "verdana",
   },
   bgCover: {
     position: "fixed",
     top: 0,
     width: "100%",
     height: "100%",
-    background: "url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-18.jpg)",
+    background:
+      "url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-18.jpg)",
     zIndex: -1,
-  }
+  },
 }));
 
 export default function Profile() {
@@ -31,9 +32,8 @@ export default function Profile() {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    getUserProfile(localStorage.getItem("userID")).then((user) => {
+    getUserProfile(localStorage.getItem("userID")).then(user => {
       setUser(user);
-      console.log(user);
     });
   }, []);
 
@@ -48,4 +48,4 @@ export default function Profile() {
       </main>
     </>
   );
-}
+};
