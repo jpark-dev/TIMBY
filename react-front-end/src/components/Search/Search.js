@@ -39,8 +39,10 @@ const Search = () => {
         <TourCard
           position="absolute"
           top={400}
-          title="Title"
-          date="May 24, 2020"
+          title="Tour de Breweries"
+          location="Vancouver"
+          time="9:00 AM"
+          date="05.24.2020"
           description="Description of the event. Description of the event."
           price="10" duration="2H" rating="4.6"
           toggleMap={changeProp} />
