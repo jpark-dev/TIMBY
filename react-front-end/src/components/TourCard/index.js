@@ -11,23 +11,39 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import StarIcon from '@material-ui/icons/Star';
 import ExploreIcon from '@material-ui/icons/Explore';
+import Button from '@material-ui/core/Button';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'rgba(192,192,192,0.2)',
+    backgroundColor: 'transparent',
     backgroundImage: "url(https://www.transparenttextures.com/patterns/sandpaper.png)"
+  },
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+  iconSize: {
+    fontSize: 10
+  },
+  cardBottom: {
+    display: 'flex'
   }
-});
+}));
 
 const TourCard = (props) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} borderRadius={25}>
       <CardHeader
-        avatar={<Avatar aria-label="tour guide avatar" src="https://material-ui.com/static/images/avatar/1.jpg" />}
+        avatar={<Avatar aria-label="tour guide avatar" src="https://material-ui.com/static/images/avatar/1.jpg" className={classes.large} />}
+        action={
+          <IconButton color="primary" onClick={() => props.toggleMap()} >
+            <ExploreIcon fontSize="small" />
+          </IconButton>
+        }
         title={props.title}
-        subheader={props.date}
+        subheader="Host: Walt Frasier"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -35,18 +51,15 @@ const TourCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <IconButton aria-label="price">
-          <LocalOfferIcon /> {props.price}
-        </IconButton>
-        <IconButton aria-label="duration">
-          <ScheduleIcon /> {props.duration}
-        </IconButton>
-        <IconButton aria-label="rating">
-          <StarIcon /> {props.rating}
-        </IconButton>
-        <IconButton aria-label="delete" onClick={() => props.toggleMap()} >
-          <ExploreIcon />
-        </IconButton>
+        <Button size="small" color="primary">
+          <LocalOfferIcon /> 05.24.2020
+        </Button>
+        <Button size="small" color="primary">
+          <StarIcon /> 4.6
+        </Button>
+        <Button size="small" color="primary">
+          <ScheduleIcon /> 9:00 AM
+        </Button>
       </CardActions>
     </Card>
   )
