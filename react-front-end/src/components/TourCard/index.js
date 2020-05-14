@@ -15,8 +15,8 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'transparent',
-    backgroundImage: "url(https://www.transparenttextures.com/patterns/sandpaper.png)"
+    backgroundColor: 'white',
+    // backgroundImage: "url(https://www.transparenttextures.com/patterns/sandpaper.png)"
   },
   large: {
     width: theme.spacing(7),
@@ -34,7 +34,7 @@ const TourCard = (props) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} borderRadius={25}>
+    <Card className={classes.root} borderradius={25}>
       <CardHeader
         avatar={<Avatar aria-label="tour guide avatar" src="https://material-ui.com/static/images/avatar/1.jpg" className={classes.large} />}
         action={
@@ -55,7 +55,7 @@ const TourCard = (props) => {
           <LocalOfferIcon /> 05.24.2020
         </Button>
         <Button size="small" color="primary">
-          <StarIcon /> 4.6
+          <StarIcon /> {props.rating}
         </Button>
         <Button size="small" color="primary">
           <ScheduleIcon /> 9:00 AM
