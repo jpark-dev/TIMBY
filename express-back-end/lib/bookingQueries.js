@@ -27,6 +27,20 @@ const updateBooking = (id, status) => {
 
 module.exports.updateBooking = updateBooking;
 
+const updateBookingWithFeedback = (id, rating, comment) => {
+  return db.query(`
+  UPDATE bookings SET rating = $2, comment = $3
+  WHERE id = $1
+  RETURNING id, user_id;
+  `, [id, rating, comment])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(error => console.log(error));
+};
+
+module.exports.updateBookingWithFeedback = updateBookingWithFeedback;
+
 const getBooking = (id) => {
   return db.query(`
   SELECT *
