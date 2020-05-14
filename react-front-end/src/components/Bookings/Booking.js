@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
+// import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -44,7 +44,7 @@ export default function ImgMediaCard(props) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <div>
         <CardMedia
           component="img"
           alt={props.title}
@@ -71,7 +71,7 @@ export default function ImgMediaCard(props) {
             <TransitionsModal setStatus={(p) => setStatus(p)} {...props} />
           </CardActions>
         </CardContent>
-      </CardActionArea>
+      </div>
     </Card>
   );
 }
