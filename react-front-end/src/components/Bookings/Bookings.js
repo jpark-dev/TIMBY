@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import fetchBookingsForUser from '../../helpers/fetchBookingsForUser';
 import requestBooking from '../../helpers/requestBooking';
-import ImgMediaCard from './ImgMediaCard';
+import Booking from './Booking';
+
+import './bookings.css'
 
 export default function Bookings () {
   const [bookings, setBookings] = useState([]);
@@ -14,14 +16,13 @@ export default function Bookings () {
   }, []);
 
   return(
-    <>
-      <h1>Bookings Route!</h1>
-      <h3>All Bookings:</h3>
+    <div className="bookings-container">
+      <h1>Bookings</h1>
+      <button onClick={() => requestBooking(4, 3, 7, "Tour de Breweries").then(res => res)}>Book Tour 1</button>
       {bookings.map(booking => (
-        <ImgMediaCard key={booking.id} {...booking} />
+        <Booking key={booking.id} {...booking} />
       ))}
-      <button onClick={() => requestBooking(1, 1, 7, "Tour de Breweries").then(res => res)}>Book Tour 1</button>
-    </>
+    </div>
   )
 };
 
