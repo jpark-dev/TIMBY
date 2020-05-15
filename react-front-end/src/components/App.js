@@ -6,6 +6,7 @@ import Search from './Search/Search';
 import Listings from './Listings/Listings';
 import Profile from './Profile/Profile';
 import Bookings from './Bookings/Bookings';
+import Notifications from './Notifications';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,8 +24,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import StoreIcon from '@material-ui/icons/Store';
 import MenuIcon from '@material-ui/icons/Menu';
-import PersonIcon from '@material-ui/icons/Person';
+import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -54,14 +56,32 @@ export default function App() {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
   const [title, setTitle] = React.useState('TIMBY');
+  const [invisible, setInvisible] = React.useState(false);
+  const [notificationsVisible, setNotificationsVisible] = React.useState(false);
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState(open);
   };
+
+  const toggleNotifications = () => {
+    setInvisible(true);
+
+    if (!notificationsVisible) {
+      setNotificationsVisible(true);
+    } else {
+      setNotificationsVisible(false);
+    }
+  }
+  
+  React.useEffect(() => {    
+    // Show notification alert (red dot next to bell icon) when a push notification is received
+    navigator.serviceWorker.addEventListener('message', function(event) {
+      setInvisible(false);
+    });
+  },[])
 
   const list = () => (
     <div
@@ -110,10 +130,16 @@ export default function App() {
           <Typography variant="h6" className={classes.title}>
             {title}
           </Typography>
-          <IconButton className={classes.menuButton}><PersonIcon /></IconButton>
-          <IconButton className={classes.menuButton}><NotificationsIcon /></IconButton>
+          {/* <IconButton onClick={() => notifyUser(7, 'hello user 7')} className={classes.menuButton}><PersonIcon /></IconButton> */}
+          {/* <IconButton onClick={() => notifyUser(1, 'hello user 1')} className={classes.menuButton}><PersonIcon /></IconButton> */}
+          <IconButton onClick={toggleNotifications} className={classes.menuButton}>
+            <Badge color="secondary" variant="dot" invisible={invisible}>
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
         </Toolbar>
       </AppBar>
+      {notificationsVisible && <Notifications closeNotifications={() => setNotificationsVisible(false)}/>}
       <Switch>
         <Route path="/search" component={Search} />
         <Route path="/bookings" component={Bookings} />

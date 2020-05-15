@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-// import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import TransitionsModal from './TransitionsModal';
+import BookingDetails from './BookingDetails';
 
 import fetchMediaForTour from '../../helpers/fetchMediaForTour';
 
@@ -68,7 +67,7 @@ export default function ImgMediaCard(props) {
             <Typography variant="body1" component="h6">
               {status}
             </Typography>
-            <TransitionsModal setStatus={(p) => setStatus(p)} {...props} />
+            <BookingDetails setStatus={(p) => setStatus(p)} {...props} />
           </CardActions>
         </CardContent>
       </div>
