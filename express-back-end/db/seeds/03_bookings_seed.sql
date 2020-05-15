@@ -12,4 +12,7 @@ INSERT INTO bookings (tour_id, user_id, comment, rating, created_at, status)
   VALUES (2, 6, NULL, NULL, '2020-05-15 10:00:00', 'Confirmed');
 
 INSERT INTO bookings (tour_id, user_id, comment, rating, created_at, status)
-  VALUES (2, 7, NULL, NULL, '2020-05-15 10:00:00', 'Confirmed');
+  VALUES (1, 7, NULL, NULL, '2020-05-15 10:00:00', 'Pending'),
+  (3, 7, NULL, NULL, '2020-05-15 10:00:00', 'Confirmed'),
+  (4, 7, NULL, NULL, '2020-05-15 10:00:00', 'Completed');
+  

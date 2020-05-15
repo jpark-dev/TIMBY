@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-// import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import TransitionsModal from './TransitionsModal';
+import TransitionsModal from '../Bookings/TransitionsModal';
 
 import fetchMediaForTour from '../../helpers/fetchMediaForTour';
 
@@ -31,7 +30,7 @@ export default function ImgMediaCard(props) {
   const tourDateTime = new Date(props.date_time);
 
   useEffect(() => {
-    fetchMediaForTour(props.tour_id)
+    fetchMediaForTour(props.id)
       .then(media => {
         const imagePaths = [];
         media.forEach((object) => {
@@ -48,7 +47,7 @@ export default function ImgMediaCard(props) {
         <CardMedia
           component="img"
           alt={props.title}
-          height="140"
+          height="80"
           image={tourImages[0]}
           title={props.title}
         />
