@@ -70,6 +70,16 @@ export default function App() {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
+      <AppBar position="static">
+          <Typography variant="h6" align="center" className={classes.title}>
+            Welcome, userID: {localStorage.getItem('userID')}
+            <img
+            src="https://source.unsplash.com/random"
+            alt=""
+            className="user-pic"
+          />
+          </Typography>
+        </AppBar>
       <List>
         <Link to="/profile" className={classes.link} >
           <ListItem button key='profile' onClick={() => { setTitle('Profile') }}>
@@ -93,6 +103,12 @@ export default function App() {
           <ListItem button key='listings' onClick={() => { setTitle('Listings') }}>
             <ListItemIcon><StoreIcon /></ListItemIcon>
             <ListItemText primary='Listings' />
+          </ListItem>
+        </Link>
+        <Link to="/settings" className={classes.link} >
+          <ListItem button key='settings' onClick={() => { setTitle('Settings') }}>
+            <ListItemIcon><StoreIcon /></ListItemIcon>
+            <ListItemText primary='Settings' />
           </ListItem>
         </Link>
       </List>
