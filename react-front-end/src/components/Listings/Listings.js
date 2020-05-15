@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   bgCover: {
     width: "90%",
     margin: "0 auto",
-    position: "fixed",
+    position: "absolute",
     top: 0,
     width: "100%",
     height: "100%",
@@ -31,17 +31,19 @@ const useStyles = makeStyles(theme => ({
 
 const createTour = () => {
   createListing(
+    5,
     3,
     "new tour",
     "test tour for testing",
     "Vancouver",
-    "100.00100.00",
+    "49.274950",
+    "-123.122628",
     "2020-05-24 18:00:00",
     300,
     1,
     4,
     "unconfirmed",
-    8.99
+    10.99
   );
 };
 
