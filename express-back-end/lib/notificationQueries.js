@@ -17,7 +17,9 @@ const db = require('./db');
 const getNotificationsForUser = (userID) => {
   const queryString = `
   SELECT * FROM notifications
-  WHERE user_id = $1;
+  WHERE user_id = $1
+  ORDER BY created_at DESC
+  LIMIT 5;
   `;
   return db.query(queryString, [userID])
     .then(data => data)

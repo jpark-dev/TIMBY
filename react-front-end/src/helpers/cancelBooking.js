@@ -6,7 +6,7 @@ export default function cancelBooking(bookingID, hostID, tourName, userID) {
     status: 'Cancelled'
   })
   .then(res => {
-    notifyUser(userID, `Your booking for ${tourName} was successfully cancelled!`);
+    // notifyUser(userID, `Your booking for ${tourName} was successfully cancelled!`);
     notifyUser(hostID, `A user has cancelled their booking for ${tourName}`);
   })
   .catch(err => console.log(err));
