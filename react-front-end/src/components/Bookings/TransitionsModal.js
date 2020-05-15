@@ -7,10 +7,14 @@ import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import CloseIcon from '@material-ui/icons/Close';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 import MyMapComponent from '../GoogleMaps';
+import ConfirmDialog from './ConfirmDialog';
+import FeedbackDialog from './FeedbackDialog';
 
-import cancelBooking from '../../helpers/cancelBooking';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -29,27 +33,37 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     margin: '10px 0'
+  },
+  closeButton: {
+    display: 'flex',
+    justifyContent: 'flex-end'
   }
 }));
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 export default function TransitionsModal(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
 
+  const [open, setOpen] = React.useState(false);
   const [status, setStatus] = useState(props.status);
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
+
   const tourDateTime = new Date(props.date_time);
 
-  const handleOpen = () => {
+  const handleOpenModal = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleCloseModal = () => {
     setOpen(false);
   };
 
   return (
     <div>
-      <Button size="small" color="primary" onClick={handleOpen}>
+      <Button size="small" color="primary" onClick={handleOpenModal}>
         Details
       </Button>
       <Modal
@@ -57,7 +71,7 @@ export default function TransitionsModal(props) {
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
-        onClose={handleClose}
+        onClose={handleCloseModal}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -66,11 +80,19 @@ export default function TransitionsModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+            <div className={classes.closeButton}>
+              <Button onClick={handleCloseModal}>
+                <CloseIcon />
+              </Button>
+            </div>
             <MyMapComponent
-              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `50vh` }} />}
               mapElement={<div style={{ height: `100%` }} />}
+              markers={[{key: props.id, lat: Number(props.lat), lng: Number(props.lng)}]}
+              changeCard={() => {}}
+              defaultZoom={13}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
@@ -94,15 +116,13 @@ export default function TransitionsModal(props) {
                 <Typography variant="body1" component="h6">
                   {status}
                 </Typography>
-                <Button onClick={() => {
-                    cancelBooking(props.id, props.host_id, props.title, props.user_id)
-                      .then(() => {
-                        props.setStatus("Cancelled");
-                        setStatus("Cancelled");
-                      })
-                  }} size="small" color="primary">
-                  Cancel Booking
-                </Button>
+                {(status !== "Cancelled" && status !== "Completed") && <ConfirmDialog setModalStatus={(p) => setStatus(p)} setIndexStatus={props.setStatus} {...props}/>}
+                {status === "Completed" && <FeedbackDialog {...props} snackBarOpen={snackBarOpen} setSnackBarOpen={setSnackBarOpen} />}
+                <Snackbar open={snackBarOpen} autoHideDuration={6000} onClose={() => setSnackBarOpen(false)}>
+                  <Alert onClose={() => setSnackBarOpen(false)} severity="success">
+                    Feedback submitted successfully!
+                  </Alert>
+                </Snackbar>
               </div>
             </CardContent>
           </div>
