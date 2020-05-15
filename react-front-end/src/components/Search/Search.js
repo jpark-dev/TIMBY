@@ -18,20 +18,22 @@ const Search = () => {
   const [inProp, setInProp] = useState(false);
   const [activeCard, setActiveCard] = useState(1);
 
-  const changeCard = (key) => {
-    setActiveCard(key);
-  }
-
   const markers = [
-    { key: '1', lat: 49.28, lng: -123.12, loadInfo: changeCard },
-    { key: '2', lat: 49.30, lng: -123.20, loadInfo: changeCard },
-    { key: '3', lat: 49.25, lng: -123.05, loadInfo: changeCard },
+    { key: '1', lat: 49.28, lng: -123.12 },
+    { key: '2', lat: 49.30, lng: -123.20 },
+    { key: '3', lat: 49.25, lng: -123.05 },
   ];
   // const [searching, setSearching] = useState(false);
 
   const changeProp = () => {
     setInProp(inProp ? false : true);
   }
+
+
+  const changeCard = (key) => {
+    setActiveCard(key);
+  }
+
   return (
     <div>
       {/* <SearchBar /> */}
@@ -39,11 +41,12 @@ const Search = () => {
         <SearchIcon />
       </IconButton> */}
       <MyMapComponent
-        googleMapURL={'https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuFpoG9VwY6gloZZ3xSAtGBkUFFOGWIs&v=3.exp&libraries=geometry,drawing,places'}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `770px`, width: '100%' }} />}
         mapElement={<div style={{ height: `100%` }} />}
         markers={markers}
+        changeCard={changeCard}
       />
       <Box
         bgcolor="background.paper"

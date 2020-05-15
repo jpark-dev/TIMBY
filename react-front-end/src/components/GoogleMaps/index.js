@@ -12,13 +12,12 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
       disableDefaultUI: true
     }}
   >
-    {/* {props.markers} */}
     {props.markers.map(marker => {
       return (
         <Marker
           key={marker.key}
           position={{ lat: marker.lat, lng: marker.lng }}
-          onClick={marker.loadInfo}
+          onClick={() => props.changeCard(marker.key)}
         />
       )
     })}
