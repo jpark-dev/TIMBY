@@ -32,7 +32,7 @@ export default function createListing(
       price,
     })
     .then((res) => {
-      res;
+      return res;
     })
     .catch((err) => console.log(err));
 }

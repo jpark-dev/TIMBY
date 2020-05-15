@@ -32,16 +32,16 @@ const useStyles = makeStyles((theme) => ({
 
 const TourCard = (props) => {
   const classes = useStyles();
-
+  { console.log(props) }
   return (
     <Card className={classes.root} borderradius={25}>
       <CardHeader
         avatar={<Avatar aria-label="tour guide avatar" src="https://material-ui.com/static/images/avatar/1.jpg" className={classes.large} />}
-        action={
-          <IconButton color="primary" onClick={() => props.toggleMap()} >
-            <ExploreIcon fontSize="small" />
-          </IconButton>
-        }
+        // action={
+        //   <IconButton color="primary" onClick={() => props.toggleMap()} >
+        //     <ExploreIcon fontSize="small" />
+        //   </IconButton>
+        // }
         title={props.title}
         subheader="Host: Walt Frasier"
       />

@@ -4,12 +4,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 
-import { faEnvelopeOpenText, faRoute } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelopeOpenText, faRoute } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Header.css";
 
 const useStyles = makeStyles(theme => ({
-  
+
 }));
 
 export default function Header(props) {

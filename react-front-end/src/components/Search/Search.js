@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MyMapComponent from '../GoogleMaps/index';
 import TourCard from '../TourCard/index';
@@ -6,6 +6,8 @@ import Box from '@material-ui/core/Box';
 // import SearchBar from '../SearchBar/SearchBar'
 // import IconButton from '@material-ui/core/IconButton';
 // import SearchIcon from '@material-ui/icons/Search';
+
+import getTours from '../../helpers/getTours';
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -15,24 +17,30 @@ const useStyles = makeStyles((theme) => ({
 
 const Search = () => {
   const classes = useStyles();
-  const [inProp, setInProp] = useState(false);
-  const [activeCard, setActiveCard] = useState(1);
+  const [activeCard, setActiveCard] = useState(0);
+  const [tours, setTours] = useState([]);
+  const [markers, setMarkers] = useState([]);
 
-  const markers = [
-    { key: '1', lat: 49.28, lng: -123.12 },
-    { key: '2', lat: 49.30, lng: -123.20 },
-    { key: '3', lat: 49.25, lng: -123.05 },
-  ];
-  // const [searching, setSearching] = useState(false);
-
-  const changeProp = () => {
-    setInProp(inProp ? false : true);
-  }
-
+  useEffect(() => {
+    getTours()
+      .then(dataTours => {
+        let tempMarkers = [];
+        setTours(dataTours);
+        for (const { id, lat, lng } of dataTours) {
+          let tempMarker = {};
+          tempMarker.key = id;
+          tempMarker.lat = parseFloat(lat);
+          tempMarker.lng = parseFloat(lng);
+          tempMarkers.push(tempMarker);
+        }
+        setMarkers(tempMarkers);
+      })
+      .catch(error => console.log(error));
+  }, []);
 
   const changeCard = (key) => {
     setActiveCard(key);
-  }
+  };
 
   return (
     <div>
@@ -43,9 +51,10 @@ const Search = () => {
       <MyMapComponent
         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
         loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `770px`, width: '100%' }} />}
+        containerElement={<div style={{ height: `100vh`, width: '100%' }} />}
         mapElement={<div style={{ height: `100%` }} />}
         markers={markers}
+        defaultZoom={12}
         changeCard={changeCard}
       />
       <Box
@@ -59,13 +68,7 @@ const Search = () => {
         <TourCard
           position="absolute"
           top={400}
-          title="Tour de Breweries"
-          location="Vancouver"
-          time="9:00 AM"
-          date="05.24.2020"
-          description="Description of the event. Description of the event."
-          price="10" duration="2H" rating={activeCard}
-          toggleMap={changeProp} />
+          {...tours[activeCard]} />
       </Box>
     </div>
   )
