@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
-    db.createListing(req.body.tourID, req.body.userID)
+    db.createListing({...req.body})
       .then(listing => {
         res.json({ listing });
       })
