@@ -18,6 +18,7 @@ const tourQueries = require('./lib/tourQueries');
 const bookingQueries = require('./lib/bookingQueries');
 const notificationQueries = require('./lib/notificationQueries');
 const mediaQueries = require('./lib/mediaQueries');
+const listingQueries = require('./lib/listingQueries');
 
 // Separated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -25,6 +26,7 @@ const toursRoutes = require("./routes/tours");
 const bookingsRoutes = require("./routes/bookings");
 const notificationsRoutes = require("./routes/notifications");
 const mediaRoutes = require("./routes/media");
+const listingRoutes = require("./routes/listings");
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: true }));
@@ -41,6 +43,7 @@ App.use("/tours", toursRoutes(tourQueries));
 App.use("/bookings", bookingsRoutes(bookingQueries));
 App.use("/notifications", notificationsRoutes(notificationQueries));
 App.use("/media", mediaRoutes(mediaQueries));
+App.use("/listings", listingRoutes(listingQueries));
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
