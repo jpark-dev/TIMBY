@@ -86,10 +86,13 @@ export default function TransitionsModal(props) {
               </Button>
             </div>
             <MyMapComponent
-              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `50vh` }} />}
               mapElement={<div style={{ height: `100%` }} />}
+              markers={[{key: props.id, lat: Number(props.lat), lng: Number(props.lng)}]}
+              changeCard={() => {}}
+              defaultZoom={13}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
