@@ -1,7 +1,6 @@
 import axios from "axios";
-import notifyUser from "./notifyUser";
 
-export default function createTour(
+export default function createListing(
   id,
   host_id,
   title,
@@ -33,7 +32,7 @@ export default function createTour(
       price,
     })
     .then((res) => {
-      notifyUser(hostID, `You have created a new tour listing: ${tourName}`);
+      res;
     })
     .catch((err) => console.log(err));
 }

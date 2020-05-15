@@ -44,7 +44,8 @@ const createTour = () => {
     4,
     "unconfirmed",
     10.99
-  );
+  ).then(res => res)
+  .catch(err => console.log(err))
 };
 
 export default function Listings() {
