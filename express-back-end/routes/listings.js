@@ -3,7 +3,9 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
-    db.createListing({...req.body})
+    db.createListing(req.body.id, req.body.host_id, req.body.title, req.body.description,
+      req.body.city, req.body.lat, req.body.lng, req.body.date_time, req.body.duration,
+      req.body.min_users, req.body.max_users, req.body.tour_status, req.body.price)
       .then(listing => {
         res.json({ listing });
       })
