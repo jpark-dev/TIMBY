@@ -42,3 +42,39 @@ div.MuiBottomNavigation-root {
 .MuiBottomNavigationAction-root.Mui-selected {
   background-color: #DDD;
 }
+
+.notifications {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  width: 20rem;
+  border-radius: 10px;
+}
+
+.notification {
+  font-size: 0.7rem;
+  padding: 10px;
+}
+
+.notification:hover {
+  background-color: #abc7ff;
+}
+
+.notifications-title {
+  padding: 10px;
+}
+.notifications-footer {
+  height: 10px;
+  border-top: 1px solid #DDD;
+}
+
+hr {
+  border-top: 1px solid #DDD;
+}
+
+.notifications a {
+  color: #222;
+  text-decoration: none;
+}

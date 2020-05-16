@@ -1,11 +1,9 @@
 INSERT INTO notifications (user_id, body)
-VALUES (2, 'Your tour booking request has been accepted!'),
-(3, 'Your tour booking request has been accepted!'),
-(4, 'Your tour booking request has been accepted!'),
-(5, 'Your tour booking request has been accepted!'),
-(6, 'Your tour booking request has been accepted!'),
-(7, 'Your tour booking request has been accepted!'),
-(1, 'You have a new booking request!'),
-(1, 'You have a new booking request!'),
-(1, 'You have a new booking request!')
-;
+VALUES (2, 'Welcome to TIMBY!'),
+(3, 'Welcome to TIMBY!'),
+(4, 'Welcome to TIMBY!'),
+(5, 'Welcome to TIMBY!'),
+(6, 'Welcome to TIMBY!'),
+(7, 'Welcome to TIMBY!'),
+(7, 'Your booking was confirmed!'),
+(1, 'Welcome to TIMBY!');
