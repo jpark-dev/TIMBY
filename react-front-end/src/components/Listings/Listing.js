@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import TransitionsModal from '../Bookings/TransitionsModal';
+import TransitionsModal from '../Bookings/BookingDetails';
 
 import fetchMediaForTour from '../../helpers/fetchMediaForTour';
 
@@ -61,7 +61,7 @@ export default function ImgMediaCard(props) {
             </Typography>
           </div>
           <Typography variant="body2" component="span">
-              {tourDateTime.toLocaleString("en-US", {year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: true})}
+            {tourDateTime.toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: true })}
           </Typography>
           <CardActions className={classes.tourDetails}>
             <Typography variant="body1" component="h6">
