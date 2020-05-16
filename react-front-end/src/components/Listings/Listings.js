@@ -56,7 +56,6 @@ export default function Listings() {
   useEffect(() => {
     fetchListingsForUser(localStorage.getItem("userID")).then((listings) => {
       setListings(listings);
-      console.log(listings);
     });
   }, []);
 

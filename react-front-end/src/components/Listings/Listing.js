@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import TransitionsModal from '../Bookings/TransitionsModal';
+import ListingDetails from './ListingDetails';
 
 import fetchMediaForTour from '../../helpers/fetchMediaForTour';
 
@@ -24,6 +24,7 @@ const useStyles = makeStyles({
 export default function ImgMediaCard(props) {
   const classes = useStyles();
 
+  console.log(props);
   const [status, setStatus] = useState(props.status);
   const [tourImages, setTourImages] = useState([]);
 
@@ -67,7 +68,7 @@ export default function ImgMediaCard(props) {
             <Typography variant="body1" component="h6">
               {status}
             </Typography>
-            <TransitionsModal setStatus={(p) => setStatus(p)} {...props} />
+            <ListingDetails setStatus={(p) => setStatus(p)} {...props} />
           </CardActions>
         </CardContent>
       </div>
