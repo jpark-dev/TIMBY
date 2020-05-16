@@ -17,26 +17,34 @@ Team Members: Jason, Allen, Dexter
 
 ## Tourist
 
-* As a tourist, I want to be able to book a tour today ***
-* As a tourist, I want to be able to browse a map to look at tours in a given area or vicinity ***
-* As a tourist, I want to be able to search for tours with certain criteria ***
-* As a tourist, I want to be able to view tours and look at their descriptions, ratings, and comments ***
-* As a tourist, I want to be able to view all current and past tours that I have done ***
-* As a tourist, I want to receive a confirmation notification that my booking status has changed ***
-* As a tourist, I want to be able to provide feedback on tours that I have done ***
+* As a tourist, I want to be able to book a tour today *** [ Allen ]
+* As a tourist, I want to be able to browse a map to look at tours in a given area or vicinity *** [ Allen ]
+* As a tourist, I want to be able to search for tours with certain criteria *** [ Everyone ]
+* As a tourist, I want to be able to view tours and look at their descriptions, ratings, and comments *** [ Allen ]
+* As a tourist, I want to be able to view all current and past tours that I have done *** [ Done ]
+* As a tourist, I want to receive a confirmation notification that my booking status has changed *** [ Done ]
+* As a tourist, I want to be able to provide feedback on tours that I have done *** [ Done ]
 
 ## Local Guide
 
-* As a guide, I want to receive a notification when someone requests a booking for my tour ***
-* As a guide, I want to be able to confirm or reject booking requests ***
-* As a guide, I want to be able to view all current and past tours that I have done ***
+* As a guide, I want to receive a notification when someone requests a booking for my tour *** [ Done ]
+* As a guide, I want to be able to confirm or reject booking requests *** [ Jason ]
+* As a guide, I want to be able to view all current and past tours that I have done *** [ Jason ]
+
+## Strecth Goals Achieved
+
+* Tourist can cancel the booking - pending/cancel [ Done ]
+
+
+## Jason personal wish goal
+
+* Change states for loading?
 
 ## Stretch Features
 
 * Payment
 * Live communication between guide and tourist
 * Comments on comments
-* Tour cancel button
 * Guide can create a new tour
 * Guide can update tour status
 * Guide can respond to feedback comments
@@ -103,14 +111,23 @@ Don't forget to pull regularly to ensure that you have the latest version
 
 # Presentation Flow
 
-1. Showcase PWA installation
+0. Two mobile screens setup, logged in (tourist, guide)**
+
+0. Self introduction ( ~ 1m)
+- Our goal / project
+
+1. Showcase PWA installation ( ~ 1m)
+  - Explanation about PWA
+  - Open the App from homescreen (Splash, app icon)
 
 2. Show tour that has been created
+
 3. Tourist searches for and books a tour
 4. Local guide receives notification and accepts request
 5. Tourist receives notification that tour is confirmed (shows location on a google map)
 6. --- Tourist does tour ---
 7. Tourist leaves feedback and rating for the tour
 
-8. Showcase testing suite
+8. Showcase testing (!?)
+
 9. Summarize extra features not demonstrated
