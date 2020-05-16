@@ -39,7 +39,7 @@ const Search = () => {
   }, []);
 
   const changeCard = (key) => {
-    setActiveCard(key);
+    setActiveCard(key - 1);
   };
 
   return (

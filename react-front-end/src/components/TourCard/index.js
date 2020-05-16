@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -13,10 +13,13 @@ import StarIcon from '@material-ui/icons/Star';
 import ExploreIcon from '@material-ui/icons/Explore';
 import Button from '@material-ui/core/Button';
 
+
+import getHostName from '../../helpers/getHostName';
+import getTourRating from '../../helpers/getTourRating';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: 'white',
-    // backgroundImage: "url(https://www.transparenttextures.com/patterns/sandpaper.png)"
   },
   large: {
     width: theme.spacing(7),
@@ -32,7 +35,26 @@ const useStyles = makeStyles((theme) => ({
 
 const TourCard = (props) => {
   const classes = useStyles();
-  { console.log(props) }
+  const [name, setName] = useState();
+  const [rating, setRating] = useState();
+
+  useEffect(() => {
+    if (props.host_id) {
+      getHostName(props.host_id)
+        .then(name => {
+          setName(name);
+        })
+        .catch(error => console.log(error))
+    }
+    if (props.id) {
+      getTourRating(props.id)
+        .then(rating => {
+          setRating(rating);
+        })
+        .catch(error => console.log(error))
+    }
+  }, [props]);
+
   return (
     <Card className={classes.root} borderradius={25}>
       <CardHeader
@@ -43,7 +65,7 @@ const TourCard = (props) => {
         //   </IconButton>
         // }
         title={props.title}
-        subheader="Host: Walt Frasier"
+        subheader={`Host: ${name}`}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -52,13 +74,13 @@ const TourCard = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small" color="primary">
-          <LocalOfferIcon /> 05.24.2020
+          <LocalOfferIcon /> ${props.price}
         </Button>
         <Button size="small" color="primary">
-          <StarIcon /> {props.rating}
+          <ScheduleIcon /> {props.date_time ? new Date(props.date_time).toLocaleTimeString('en-US', { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: true }) : null}
         </Button>
         <Button size="small" color="primary">
-          <ScheduleIcon /> 9:00 AM
+          <StarIcon /> {rating}
         </Button>
       </CardActions>
     </Card>
