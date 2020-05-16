@@ -1,11 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
-export default function requestUserProfile(userID) {
+export default function getTourRating(userID) {
   return axios
     .get(`${process.env.REACT_APP_API_URL}/users/profile/${userID}`)
     .then(res => {
-      console.log(res);
-      return res.data.user
+      return 4.6;
     })
     .catch(err => console.log(err));
-};
+}
