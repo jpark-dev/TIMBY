@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import React, { useState, useEffect } from "react";
 
-import TransitionsModal from '../Bookings/BookingDetails';
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
 
-import fetchMediaForTour from '../../helpers/fetchMediaForTour';
+import ListingDetails from "./ListingDetails";
+import ListingBookings from "./ListingBookings";
+
+import fetchMediaForTour from "../../helpers/fetchMediaForTour";
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
-    margin: '20px 0'
+    width: "100%",
+    margin: "20px 0",
   },
   tourDetails: {
-    display: 'flex',
-    justifyContent: 'space-between'
-  }
+    display: "flex",
+    justifyContent: "space-between",
+  },
 });
 
 export default function ImgMediaCard(props) {
@@ -31,14 +33,14 @@ export default function ImgMediaCard(props) {
 
   useEffect(() => {
     fetchMediaForTour(props.id)
-      .then(media => {
+      .then((media) => {
         const imagePaths = [];
         media.forEach((object) => {
           imagePaths.push(object.src);
-        })
+        });
         setTourImages(imagePaths);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }, [props.tour_id]);
 
   return (
@@ -61,13 +63,18 @@ export default function ImgMediaCard(props) {
             </Typography>
           </div>
           <Typography variant="body2" component="span">
-            {tourDateTime.toLocaleString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: true })}
+            {tourDateTime.toLocaleString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            })}
           </Typography>
           <CardActions className={classes.tourDetails}>
-            <Typography variant="body1" component="h6">
-              {status}
-            </Typography>
-            <TransitionsModal setStatus={(p) => setStatus(p)} {...props} />
+            <ListingBookings {...props} />
+            <ListingDetails setStatus={(p) => setStatus(p)} {...props} />
           </CardActions>
         </CardContent>
       </div>

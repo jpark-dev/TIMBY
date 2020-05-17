@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
-import fetchListingsForUser from "../../helpers/fetchListingsForUser";
-import Listing from "./Listing";
+
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
-import createListing from "../../helpers/createListing";
 import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
 
+import Listing from "./Listing";
+import createListing from "../../helpers/createListing";
+import fetchListingsForUser from "../../helpers/fetchListingsForUser";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   newButton: {
     margin: theme.spacing(8, 0, 1),
     width: "100%",
     position: "relative",
     fontSize: "xx-large",
     fontWeight: "bold",
-    backgroundColor: "rgba(63, 81, 181, 0.5)"
+    backgroundColor: "rgba(63, 81, 181, 0.5)",
   },
   bgCover: {
     width: "90%",
@@ -44,8 +45,9 @@ const createTour = () => {
     4,
     "unconfirmed",
     10.99
-  ).then(res => res)
-  .catch(err => console.log(err))
+  )
+    .then((res) => res)
+    .catch((err) => console.log(err));
 };
 
 export default function Listings() {
@@ -56,7 +58,6 @@ export default function Listings() {
   useEffect(() => {
     fetchListingsForUser(localStorage.getItem("userID")).then((listings) => {
       setListings(listings);
-      console.log(listings);
     });
   }, []);
 
@@ -75,7 +76,6 @@ export default function Listings() {
         {listings.map((listing) => (
           <Listing key={listing.id} {...listing} />
         ))}
-
       </Container>
     </main>
   );
