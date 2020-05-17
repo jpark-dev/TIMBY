@@ -55,6 +55,7 @@ const Search = () => {
         mapElement={<div style={{ height: `100%` }} />}
         markers={markers}
         defaultZoom={12}
+        lat={49.24}
         changeCard={changeCard}
       />
       <Box
@@ -62,7 +63,7 @@ const Search = () => {
         color="text.primary"
         p={2}
         position="absolute"
-        bottom={25}
+        bottom={0}
         className={classes.box}
       >
         <TourCard

@@ -5,7 +5,7 @@ import styles from './GoogleMapsStyles.json';
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={props.defaultZoom}
-    defaultCenter={{ lat: 49.282730, lng: -123.1207351 }}
+    defaultCenter={{ lat: props.lat ? props.lat : 49.282730, lng: props.lng ? props.lng : -123.1207351 }}
     defaultOptions={{
       fullscreenControl: false,
       styles: styles,
