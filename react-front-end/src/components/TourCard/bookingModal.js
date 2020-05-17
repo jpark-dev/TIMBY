@@ -8,6 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import requestBooking from '../../helpers/requestBooking';
 
 const BookingModal = (props) => {
+  console.log(props)
   return (
     <Card >
       <CardActions>
@@ -15,8 +16,11 @@ const BookingModal = (props) => {
           aria-label="Book"
           onClick={() => {
             requestBooking(
+              props.id,
               props.host_id,
-              parseInt(localStorage.getItem('userID')))
+              parseInt(localStorage.getItem('userID')),
+              props.title
+            )
           }}
         >
           <EventAvailableIcon /> Book Event
