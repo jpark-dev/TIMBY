@@ -2,7 +2,7 @@ const db = require('./db');
 
 const getListingsByHost = id => {
   return db.query(`
-  SELECT tours.*, COUNT(bookings) AS bookingCnt
+  SELECT tours.*, COUNT(bookings) AS booking_cnt
   FROM tours JOIN bookings ON tours.id = bookings.tour_id
   WHERE tours.host_id = $1
   GROUP BY tours.id
