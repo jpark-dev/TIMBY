@@ -139,7 +139,7 @@ const TourCard = (props) => {
         aria-describedby="simple-modal-description"
       >
         <div className={classes.paper}>
-          <DetailedModal close={handleClose} {...props} />
+          <BookingModal close={handleClose} {...props} />
         </div>
       </Modal>
     </Card>
