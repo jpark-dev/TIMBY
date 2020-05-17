@@ -69,6 +69,22 @@ const getBookingsByTour = (tourId) => {
 
 module.exports.getBookingsByTour = getBookingsByTour;
 
+
+const getBookingsByListing = (tourId) => {
+  return db.query(`
+  SELECT bookings.id, bookings.tour_id, bookings.user_id, bookings.status, users.name, tours.title FROM bookings
+  JOIN users ON bookings.user_id = users.id
+  JOIN tours ON bookings.tour_id = tours.id
+  WHERE tour_id = $1
+  `, [tourId])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(error => console.log(error));
+};
+
+module.exports.getBookingsByListing = getBookingsByListing;
+
 const getBookingsByUser = (userId) => {
   return db.query(`
   SELECT bookings.id AS id, bookings.tour_id AS tour_id, bookings.user_id AS user_id, bookings.status AS status, 
