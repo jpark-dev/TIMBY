@@ -62,6 +62,18 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/listing/:listing_id", (req, res) => {
+    db.getBookingsByListing(req.params.listing_id)
+      .then(bookings => {
+        res.json({ bookings });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.get("/user/:user_id", (req, res) => {
     db.getBookingsByUser(req.params.user_id)
       .then(bookings => {
