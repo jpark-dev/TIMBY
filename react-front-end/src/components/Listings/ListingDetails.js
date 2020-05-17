@@ -1,43 +1,40 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Button from '@material-ui/core/Button';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import CloseIcon from '@material-ui/icons/Close';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Button from "@material-ui/core/Button";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Typography from "@material-ui/core/Typography";
+import CardContent from "@material-ui/core/CardContent";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import CloseIcon from "@material-ui/icons/Close";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
-import MyMapComponent from '../GoogleMaps';
-import ConfirmDialog from '../Bookings/ConfirmDialog';
-import FeedbackDialog from '../Bookings/FeedbackDialog';
-
+import MyMapComponent from "../GoogleMaps";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    outline: 'none'
+    outline: "none",
   },
   tourDetails: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '10px 0'
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "10px 0",
   },
   closeButton: {
-    display: 'flex',
-    justifyContent: 'flex-end'
-  }
+    display: "flex",
+    justifyContent: "flex-end",
+  },
 }));
 
 function Alert(props) {
@@ -90,7 +87,13 @@ export default function TransitionsModal(props) {
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={{ height: `50vh` }} />}
               mapElement={<div style={{ height: `100%` }} />}
-              markers={[{key: props.id, lat: Number(props.lat), lng: Number(props.lng)}]}
+              markers={[
+                {
+                  key: props.id,
+                  lat: Number(props.lat),
+                  lng: Number(props.lng),
+                },
+              ]}
               changeCard={() => {}}
               defaultZoom={13}
             />
@@ -98,31 +101,28 @@ export default function TransitionsModal(props) {
               <Typography gutterBottom variant="h5" component="h2">
                 {props.title}
               </Typography>
-              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+              <Typography
+                gutterBottom
+                variant="body2"
+                color="textSecondary"
+                component="p"
+              >
                 {props.description}
-              </Typography>
-              <Typography variant="body2" component="p">
-                Hosted By {props.host_name} ({props.host_phone})
               </Typography>
               <div className={classes.tourDetails}>
                 <Typography variant="body2" component="p">
-                  {tourDateTime.toLocaleString("en-US", {year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: true})}
+                  {tourDateTime.toLocaleString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}
                 </Typography>
                 <Typography variant="body2" component="p">
                   <AccessTimeIcon /> {props.duration / 60} hrs
                 </Typography>
-              </div>
-              <div className={classes.tourDetails}>
-                <Typography variant="body1" component="h6">
-                  {status}
-                </Typography>
-                {/* {(status !== "Cancelled" && status !== "Completed") && <ConfirmDialog setModalStatus={(p) => setStatus(p)} setIndexStatus={props.setStatus} {...props}/>}
-                {status === "Completed" && <FeedbackDialog {...props} snackBarOpen={snackBarOpen} setSnackBarOpen={setSnackBarOpen} />} */}
-                <Snackbar open={snackBarOpen} autoHideDuration={6000} onClose={() => setSnackBarOpen(false)}>
-                  <Alert onClose={() => setSnackBarOpen(false)} severity="success">
-                    Feedback submitted successfully!
-                  </Alert>
-                </Snackbar>
               </div>
             </CardContent>
           </div>
