@@ -139,7 +139,7 @@ export default function App() {
     <main>
       <AppBar position="static" className={classes.transparent}>
         <Toolbar>
-          <IconButton className={classes.menuButton} onClick={toggleDrawer(true)}><MenuIcon /></IconButton>
+          <IconButton className={`menu-button ${classes.menuButton}`} onClick={toggleDrawer(true)}><MenuIcon /></IconButton>
           <Drawer open={state} onClose={toggleDrawer(false)}>
             {list()}
           </Drawer>
@@ -148,7 +148,7 @@ export default function App() {
           </Typography>
           {/* <IconButton onClick={() => notifyUser(7, 'hello user 7')} className={classes.menuButton}><PersonIcon /></IconButton> */}
           {/* <IconButton onClick={() => notifyUser(1, 'hello user 1')} className={classes.menuButton}><PersonIcon /></IconButton> */}
-          <IconButton onClick={toggleNotifications} className={classes.menuButton}>
+          <IconButton onClick={toggleNotifications} className={`notifications-button ${classes.menuButton}`}>
             <Badge color="secondary" variant="dot" invisible={invisible}>
               <NotificationsIcon />
             </Badge>

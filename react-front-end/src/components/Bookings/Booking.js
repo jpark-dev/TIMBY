@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -7,8 +7,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 import BookingDetails from './BookingDetails';
-
-import fetchMediaForTour from '../../helpers/fetchMediaForTour';
 
 const useStyles = makeStyles({
   root: {
@@ -25,21 +23,8 @@ export default function ImgMediaCard(props) {
   const classes = useStyles();
 
   const [status, setStatus] = useState(props.status);
-  const [tourImages, setTourImages] = useState([]);
 
   const tourDateTime = new Date(props.date_time);
-
-  useEffect(() => {
-    fetchMediaForTour(props.tour_id)
-      .then(media => {
-        const imagePaths = [];
-        media.forEach((object) => {
-          imagePaths.push(object.src);
-        })
-        setTourImages(imagePaths);
-      })
-      .catch(error => console.log(error));
-  }, [props.tour_id]);
 
   return (
     <Card className={classes.root}>
@@ -48,7 +33,7 @@ export default function ImgMediaCard(props) {
           component="img"
           alt={props.title}
           height="140"
-          image={tourImages[0]}
+          image={props.image_src}
           title={props.title}
         />
         <CardContent>

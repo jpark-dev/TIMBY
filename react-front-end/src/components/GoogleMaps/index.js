@@ -5,7 +5,7 @@ import styles from './GoogleMapsStyles.json';
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={props.defaultZoom}
-    defaultCenter={{ lat: 49.282730, lng: -123.1207351 }}
+    defaultCenter={{ lat: props.lat ? props.lat : 49.282730, lng: props.lng ? props.lng : -123.1207351 }}
     defaultOptions={{
       fullscreenControl: false,
       styles: styles,
@@ -17,6 +17,9 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
         <Marker
           key={marker.key}
           position={{ lat: marker.lat, lng: marker.lng }}
+          icon={{
+            url: 'https://raw.githubusercontent.com/headhuntar/TIMBY/marker-icon/react-front-end/public/icons/icon-48.png',
+          }}
           onClick={() => props.changeCard(marker.key)}
         />
       )

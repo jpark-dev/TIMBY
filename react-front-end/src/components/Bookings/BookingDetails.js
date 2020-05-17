@@ -81,7 +81,7 @@ export default function TransitionsModal(props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <div className={classes.closeButton}>
-              <Button onClick={handleCloseModal}>
+              <Button className={'close-button'} onClick={handleCloseModal}>
                 <CloseIcon />
               </Button>
             </div>
