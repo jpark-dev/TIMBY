@@ -10,9 +10,13 @@ import Typography from '@material-ui/core/Typography';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import StarIcon from '@material-ui/icons/Star';
-import ExploreIcon from '@material-ui/icons/Explore';
 import Button from '@material-ui/core/Button';
-
+import Modal from '@material-ui/core/Modal';
+import BookingModal from './bookingModal';
+import EventIcon from '@material-ui/icons/Event';
+import Carousel from 'react-material-ui-carousel'
+import CardMedia from '@material-ui/core/CardMedia';
+import fetchMediaForTour from '../../helpers/fetchMediaForTour';
 
 import getHostName from '../../helpers/getHostName';
 import getTourRating from '../../helpers/getTourRating';
@@ -30,6 +34,18 @@ const useStyles = makeStyles((theme) => ({
   },
   cardBottom: {
     display: 'flex'
+  },
+  media: {
+    height: 140,
+  },
+  paper: {
+    position: 'absolute',
+    width: 400,
+    top: '25vh',
+    backgroundColor: 'transparent',
+  },
+  label: {
+    flexDirection: 'column'
   }
 }));
 
@@ -37,6 +53,8 @@ const TourCard = (props) => {
   const classes = useStyles();
   const [name, setName] = useState();
   const [rating, setRating] = useState();
+  const [open, setOpen] = useState(false);
+  const [tourImages, setTourImages] = useState([]);
 
   useEffect(() => {
     if (props.host_id) {
@@ -52,21 +70,52 @@ const TourCard = (props) => {
           setRating(rating);
         })
         .catch(error => console.log(error))
+
+      fetchMediaForTour(props.id)
+        .then(media => {
+          const imagePaths = [];
+          media.forEach((object) => {
+            imagePaths.push(object.src);
+          })
+          setTourImages(imagePaths);
+        })
+        .catch(error => console.log(error))
     }
   }, [props]);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Card className={classes.root} borderradius={25}>
       <CardHeader
         avatar={<Avatar aria-label="tour guide avatar" src="https://material-ui.com/static/images/avatar/1.jpg" className={classes.large} />}
-        // action={
-        //   <IconButton color="primary" onClick={() => props.toggleMap()} >
-        //     <ExploreIcon fontSize="small" />
-        //   </IconButton>
-        // }
+        action={
+          <IconButton classes={{ label: classes.label }} color="primary" onClick={handleOpen} >
+            <EventIcon />
+            <Typography variant="subtitle1">
+              Book
+            </Typography>
+          </IconButton>
+        }
         title={props.title}
         subheader={`Host: ${name}`}
       />
+      <Carousel indicators={false}>
+        {
+          tourImages.map((image, index) => <CardMedia
+            key={index}
+            className={classes.media}
+            image={image}
+            title="Contemplative Reptile"
+          />)
+        }
+      </Carousel>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {props.description}
@@ -83,6 +132,16 @@ const TourCard = (props) => {
           <StarIcon /> {rating}
         </Button>
       </CardActions>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <div className={classes.paper}>
+          <DetailedModal close={handleClose} {...props} />
+        </div>
+      </Modal>
     </Card>
   )
 }
