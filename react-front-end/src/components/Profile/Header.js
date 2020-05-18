@@ -21,7 +21,7 @@ export default function Header(props) {
       <Container>
         <div className="middle">
           <img
-            src="https://source.unsplash.com/random"
+            src={props.avatar}
             alt=""
             className="user-pic"
           />
