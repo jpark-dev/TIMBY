@@ -53,6 +53,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function App() {
   const classes = useStyles();
+
   const [state, setState] = useState(false);
   const [title, setTitle] = useState("TIMBY");
   const [invisible, setInvisible] = useState(false);
@@ -109,20 +110,6 @@ export default function App() {
         </Typography>
       </AppBar>
       <List>
-        <Link to="/profile" className={classes.link}>
-          <ListItem
-            button
-            key="profile"
-            onClick={() => {
-              setTitle("Profile");
-            }}
-          >
-            <ListItemIcon>
-              <AccountCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
-        </Link>
         <Link to="/search" className={classes.link}>
           <ListItem
             button
@@ -163,6 +150,20 @@ export default function App() {
               <StoreIcon />
             </ListItemIcon>
             <ListItemText primary="Listings" />
+          </ListItem>
+        </Link>
+        <Link to="/profile" className={classes.link}>
+          <ListItem
+            button
+            key="profile"
+            onClick={() => {
+              setTitle("Profile");
+            }}
+          >
+            <ListItemIcon>
+              <AccountCircleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
           </ListItem>
         </Link>
         <Link to="/settings" className={classes.link}>
