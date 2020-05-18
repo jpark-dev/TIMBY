@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "go": "nodemon server.js",
-    "resetdb": "node bin/resetDatabase.js"
+    "resetdb": "node bin/resetDatabase.js",
+    "test:server": "NODE_ENV=test npm start"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
