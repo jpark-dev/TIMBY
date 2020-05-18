@@ -71,6 +71,7 @@ describe("Navigation", () => {
   });
 
   it("should navigate to the listings page and view listing details", () => {
+    localStorage.setItem('userID', 1);
     cy.visit('/');
     cy.get('.menu-button')
       .click();
@@ -79,6 +80,8 @@ describe("Navigation", () => {
       .click();
 
     cy.contains('Listings').should('be.visible');
+
+    cy.contains('Tour de Breweries').should('be.visible');
   });
 
   it("should navigate to the profile page", () => {
