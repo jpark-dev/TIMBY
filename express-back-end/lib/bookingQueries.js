@@ -87,7 +87,7 @@ module.exports.getBookingsByListing = getBookingsByListing;
 
 const getBookingsByUser = (userId) => {
   return db.query(`
-  SELECT DISTINCT ON (bookings.id) bookings.id AS id, bookings.tour_id AS tour_id, bookings.user_id AS user_id, bookings.status AS status, 
+  SELECT DISTINCT ON (bookings.id) bookings.id AS id, bookings.tour_id AS tour_id, bookings.user_id AS user_id, bookings.status AS status, bookings.created_at AS created_at,
   tours.host_id AS host_id, tours.title AS title, tours.description AS description, tours.city AS city, tours.lat AS lat, tours.lng AS lng, tours.date_time AS date_time, tours.duration AS duration,
   users.name AS host_name, users.phone AS host_phone,
   media.src AS image_src
@@ -96,7 +96,8 @@ const getBookingsByUser = (userId) => {
   JOIN users ON tours.host_id = users.id
   JOIN media ON media.tour_id = tours.id
   WHERE bookings.user_id = $1
-  GROUP BY bookings.id, tours.host_id, tours.title, tours.description, tours.city, tours.lat, tours.lng, tours.date_time, tours.duration, users.name, users.phone, media.src;
+  GROUP BY bookings.id, tours.host_id, tours.title, tours.description, tours.city, tours.lat, tours.lng, tours.date_time, tours.duration, users.name, users.phone, media.src
+  ORDER BY bookings.id DESC, bookings.created_at DESC;
   `, [userId])
     .then(res => {
       return res.rows;
