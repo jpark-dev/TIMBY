@@ -56,7 +56,7 @@ export default function BookingStatus(props) {
             variant="outlined"
             color="primary"
           >
-            {status}
+            {booking.status}
           </Button>
         )}
         {booking.status === "Declined" && (
@@ -65,7 +65,16 @@ export default function BookingStatus(props) {
             variant="outlined"
             color="secondary"
           >
-            {status}
+            {booking.status}
+          </Button>
+        )}
+        {booking.status === "Cancelled" && (
+          <Button
+            className={classes.fullWidthButton}
+            variant="outlined"
+            color="secondary"
+          >
+            {booking.status}
           </Button>
         )}
         {booking.status === "Pending" && (
