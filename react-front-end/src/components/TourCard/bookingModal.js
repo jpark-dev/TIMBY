@@ -25,7 +25,7 @@ const BookingModal = (props) => {
         >
           <EventAvailableIcon /> Book Event
         </IconButton>
-        <IconButton aria-label="Close" onClick={() => { props.close() }}>
+        <IconButton className={'cancel-button'} aria-label="Close" onClick={() => { props.close() }}>
           <CloseIcon /> Cancel
         </IconButton>
       </CardActions>

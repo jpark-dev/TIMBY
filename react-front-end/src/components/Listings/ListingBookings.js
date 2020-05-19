@@ -55,7 +55,7 @@ export default function ListingBookings(props) {
 
   return (
     <>
-      <Button onClick={handleOpenModal}>Current bookings: {bookingCnt}</Button>
+      <Button className={'current-bookings'} onClick={handleOpenModal}>Current bookings: {bookingCnt}</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -71,7 +71,7 @@ export default function ListingBookings(props) {
         <Fade in={open}>
           <div className={classes.card}>
             <div className={classes.closeButton}>
-              <Button onClick={handleCloseModal}>
+              <Button className={'close-button'} onClick={handleCloseModal}>
                 <CloseIcon />
               </Button>
             </div>
