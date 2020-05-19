@@ -23,7 +23,7 @@ import getTourRating from '../../helpers/getTourRating';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
   large: {
     width: theme.spacing(7),
@@ -46,6 +46,18 @@ const useStyles = makeStyles((theme) => ({
   },
   label: {
     flexDirection: 'column'
+  },
+  fixedDoubleLine: {
+    height: "40px"
+  },
+  noMargin: {
+    margin: "0"
+  },
+  fixedWidth: {
+    width: "327px"
+  },
+  fixedWidth40: {
+    width: "40px"
   }
 }));
 
@@ -117,13 +129,13 @@ const TourCard = (props) => {
         }
       </Carousel>
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color="textSecondary" component="p" className={classes.fixedDoubleLine}>
           {props.description}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small" color="primary">
-          <LocalOfferIcon /> ${props.price}
+      <CardActions disableSpacing className={classes.fixedWidth}>
+        <Button size="small" color="primary" >
+          <LocalOfferIcon /> <span className={classes.fixedWidth40}>${props.price}</span>
         </Button>
         <Button size="small" color="primary">
           <ScheduleIcon /> {props.date_time ? new Date(props.date_time).toLocaleTimeString('en-US', { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: true }) : null}
