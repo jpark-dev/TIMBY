@@ -50,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     color: "#000",
     boxShadow: "none",
   },
+  nav: {
+    position: "static",
+  }
 }));
 
 export default function App() {
@@ -102,7 +105,7 @@ export default function App() {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <AppBar position="static">
+      <AppBar className={classes.nav}>
         <Typography variant="h6" align="center" className={classes.title}>
           <p>Welcome, {name}</p>
           <a href="/profile">

@@ -51,6 +51,7 @@ div.MuiBottomNavigation-root {
   border: 1px solid #DDD;
   width: 20rem;
   border-radius: 10px;
+  z-index: 99;
 }
 
 .notification {
