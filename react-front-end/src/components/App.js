@@ -50,10 +50,6 @@ const useStyles = makeStyles(theme => ({
     color: "#000",
     boxShadow: "none",
   },
-<<<<<<< HEAD
-  nav: {
-    position: "static",
-=======
   bgCover: {
     color: "#000",
     margin: "0 auto",
@@ -64,7 +60,6 @@ const useStyles = makeStyles(theme => ({
     background:
       "url(/docs/bg_img.jpg)",
     zIndex: 1,
->>>>>>> master
   }
 }));
 
