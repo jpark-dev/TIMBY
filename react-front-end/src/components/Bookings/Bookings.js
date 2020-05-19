@@ -5,9 +5,6 @@ import Booking from "./Booking";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-
-import "./bookings.css";
-
 const useStyles = makeStyles(theme => ({
   mainWrapper: {
     width: "90%",
