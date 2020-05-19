@@ -50,6 +50,10 @@ const useStyles = makeStyles(theme => ({
     color: "#000",
     boxShadow: "none",
   },
+<<<<<<< HEAD
+  nav: {
+    position: "static",
+=======
   bgCover: {
     color: "#000",
     margin: "0 auto",
@@ -60,6 +64,7 @@ const useStyles = makeStyles(theme => ({
     background:
       "url(/docs/bg_img.jpg)",
     zIndex: 1,
+>>>>>>> master
   }
 }));
 
@@ -113,7 +118,7 @@ export default function App() {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <AppBar position="static">
+      <AppBar className={classes.nav}>
         <Typography variant="h6" align="center" className={classes.title}>
           <p>Welcome, {name}</p>
           <a href="/profile">

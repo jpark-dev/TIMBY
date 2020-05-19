@@ -67,12 +67,14 @@ const TourCard = (props) => {
   const [rating, setRating] = useState();
   const [open, setOpen] = useState(false);
   const [tourImages, setTourImages] = useState([]);
+  const [avatar, setAvatar] = useState();
 
   useEffect(() => {
     if (props.host_id) {
       getHostName(props.host_id)
-        .then(name => {
-          setName(name);
+        .then(user => {
+          setName(user.name);
+          setAvatar(user.avatar)
         })
         .catch(error => console.log(error))
     }
@@ -106,7 +108,7 @@ const TourCard = (props) => {
   return (
     <Card className={classes.root} borderradius={25}>
       <CardHeader
-        avatar={<Avatar aria-label="tour guide avatar" src="https://material-ui.com/static/images/avatar/1.jpg" className={classes.large} />}
+        avatar={<Avatar aria-label="tour guide avatar" src={avatar} className={classes.large} />}
         action={
           <IconButton classes={{ label: classes.label }} color="primary" onClick={handleOpen} >
             <EventIcon />
