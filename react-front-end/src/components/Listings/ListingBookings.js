@@ -87,8 +87,7 @@ export default function ListingBookings(props) {
             >
               {props.title}
             </Typography>
-
-            <BookingForListing key={bookings.id} bookings={bookings} />
+            {bookings !== undefined && <BookingForListing key={bookings.id} bookings={bookings} />}
           </div>
         </Fade>
       </Modal>
