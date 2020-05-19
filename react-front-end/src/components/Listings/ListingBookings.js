@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import fetchBookingsForListing from "../../helpers/fetchBookingsForListing";
 import BookingForListing from "./BookingForListing";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   modal: {
     display: "flex",
     alignItems: "center",
@@ -47,15 +47,15 @@ export default function ListingBookings(props) {
 
   useEffect(() => {
     fetchBookingsForListing(props.id)
-      .then((bookings) => {
+      .then(bookings => {
         setBookings(bookings);
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }, []);
 
   return (
     <>
-      <Button onClick={handleOpenModal}>Current bookings: {bookingCnt}</Button>
+      <Button className={'current-bookings'} onClick={handleOpenModal}>Current bookings: {bookingCnt}</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -71,7 +71,7 @@ export default function ListingBookings(props) {
         <Fade in={open}>
           <div className={classes.card}>
             <div className={classes.closeButton}>
-              <Button onClick={handleCloseModal}>
+              <Button className={'close-button'} onClick={handleCloseModal}>
                 <CloseIcon />
               </Button>
             </div>
@@ -87,8 +87,9 @@ export default function ListingBookings(props) {
             >
               {props.title}
             </Typography>
-
-            <BookingForListing key={bookings.id} bookings={bookings} />
+            {bookings !== undefined && (
+              <BookingForListing key={bookings.id} bookings={bookings} />
+            )}
           </div>
         </Fade>
       </Modal>

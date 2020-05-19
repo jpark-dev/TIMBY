@@ -8,7 +8,7 @@ import Listing from "./Listing";
 import createListing from "../../helpers/createListing";
 import fetchListingsForUser from "../../helpers/fetchListingsForUser";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   newButton: {
     margin: theme.spacing(8, 0, 1),
     width: "100%",
@@ -24,8 +24,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     width: "100%",
     height: "100%",
-    background:
-      "url(https://pixabay.com/get/52e3d4434e51a414f6da8c7dda35367b1d36d6e75357744f_1280.jpg)",
+    background: "url(/docs/bg_img.jpg)",
     zIndex: -1,
   },
 }));
@@ -46,8 +45,8 @@ const createTour = () => {
     "unconfirmed",
     10.99
   )
-    .then((res) => res)
-    .catch((err) => console.log(err));
+    .then(res => res)
+    .catch(err => console.log(err));
 };
 
 export default function Listings() {
@@ -56,7 +55,7 @@ export default function Listings() {
   const classes = useStyles();
 
   useEffect(() => {
-    fetchListingsForUser(localStorage.getItem("userID")).then((listings) => {
+    fetchListingsForUser(localStorage.getItem("userID")).then(listings => {
       setListings(listings);
     });
   }, []);
@@ -73,7 +72,7 @@ export default function Listings() {
         >
           +
         </Button>
-        {listings.map((listing) => (
+        {listings.map(listing => (
           <Listing key={listing.id} {...listing} />
         ))}
       </Container>

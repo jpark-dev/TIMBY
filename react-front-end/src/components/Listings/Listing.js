@@ -33,14 +33,14 @@ export default function ImgMediaCard(props) {
 
   useEffect(() => {
     fetchMediaForTour(props.id)
-      .then((media) => {
+      .then(media => {
         const imagePaths = [];
-        media.forEach((object) => {
+        media.forEach(object => {
           imagePaths.push(object.src);
         });
         setTourImages(imagePaths);
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }, [props.tour_id]);
 
   return (
@@ -74,7 +74,7 @@ export default function ImgMediaCard(props) {
           </Typography>
           <CardActions className={classes.tourDetails}>
             <ListingBookings {...props} />
-            <ListingDetails setStatus={(p) => setStatus(p)} {...props} />
+            <ListingDetails setStatus={p => setStatus(p)} {...props} />
           </CardActions>
         </CardContent>
       </div>

@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     // "url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-18.jpg)",
     // "url(https://pixabay.com/get/57e0d64a4952ae14f6da8c7dda35367b1d36d6e75352784d_1280.jpg)",
     // "url(https://pixabay.com/get/54e8dc454955a514f6da8c7dda35367b1d36d6e753547648_1280.jpg)",
-    "url(https://pixabay.com/get/52e3d4434e51a414f6da8c7dda35367b1d36d6e75357744f_1280.jpg)",
+    "url(/docs/bg_img.jpg)",
     // "url(https://pixabay.com/get/5ee4d6464c56b108f5d08460da2932761c37dce6515179_1280.jpg)",
     
     zIndex: -1,

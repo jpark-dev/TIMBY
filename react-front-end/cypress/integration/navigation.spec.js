@@ -1,7 +1,7 @@
 describe("Navigation", () => {
 
   beforeEach(() => {
-    localStorage.setItem('userID', 7);
+    localStorage.setItem('userID', 6);
   });
 
   it("should visit root", () => {
@@ -17,7 +17,7 @@ describe("Navigation", () => {
 
     cy.get('[aria-label=Book]').should('be.visible');
     cy.get('[aria-label=Book]').click();
-    cy.get('[aria-label=Close]').click();
+    cy.get('.cancel-button').click();
 
     cy.get('.menu-button').click();
     cy.get("span").contains('Bookings').click();
@@ -71,7 +71,7 @@ describe("Navigation", () => {
   });
 
   it("should navigate to the listings page and view listing details", () => {
-    localStorage.setItem('userID', 1);
+    localStorage.setItem('userID', 5);
     cy.visit('/');
     cy.get('.menu-button')
       .click();
@@ -80,6 +80,11 @@ describe("Navigation", () => {
       .click();
 
     cy.contains('Listings').should('be.visible');
+
+    cy.get('.current-bookings').first().click();
+    cy.contains('Status').should('be.visible');
+
+    cy.get('.close-button').click();
 
     cy.contains('Tour de Breweries').should('be.visible');
   });
@@ -92,11 +97,11 @@ describe("Navigation", () => {
     cy.get("span").contains('Profile')
       .click();
 
-    cy.contains('Dexter').should('be.visible');
+    cy.contains('Jason').should('be.visible');
   });
 
   it("should view all notifications for current user", () => {
-    cy.visit('/bookings');
+    cy.visit('/search');
 
     cy.get('.notifications-button').click();
     cy.get('.notification').first().should('be.visible');

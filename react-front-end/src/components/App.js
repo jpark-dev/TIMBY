@@ -50,8 +50,21 @@ const useStyles = makeStyles(theme => ({
     color: "#000",
     boxShadow: "none",
   },
+<<<<<<< HEAD
   nav: {
     position: "static",
+=======
+  bgCover: {
+    color: "#000",
+    margin: "0 auto",
+    position: "fixed",
+    top: 0,
+    width: "100%",
+    height: "auto",
+    background:
+      "url(/docs/bg_img.jpg)",
+    zIndex: 1,
+>>>>>>> master
   }
 }));
 
@@ -190,7 +203,7 @@ export default function App() {
 
   return (
     <main>
-      <AppBar position="static" className={classes.transparent}>
+      <AppBar position="static" className={classes.bgCover}>
         <Toolbar>
           <IconButton
             className={`menu-button ${classes.menuButton}`}

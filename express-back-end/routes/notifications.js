@@ -30,17 +30,6 @@ module.exports = (db) => {
           console.log(err);
         })
     }
-  
-    const payload = JSON.stringify({
-      title: 'TIMBY',
-      body: 'Welcome to TIMBY!',
-    })
-  
-    webpush.sendNotification(subscription, payload)
-      .then(result => {;
-        console.log("Notification sent from server!");
-      })
-      .catch(e => console.log(e.stack))
       
     // Indicate successful response to client
     res.status(200).json({'success': true});
