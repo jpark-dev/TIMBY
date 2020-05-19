@@ -26,7 +26,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import StoreIcon from "@material-ui/icons/Store";
 import MenuIcon from "@material-ui/icons/Menu";
 import Badge from "@material-ui/core/Badge";
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from "@material-ui/icons/Settings";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 const useStyles = makeStyles(theme => ({
@@ -57,10 +57,12 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     width: "100%",
     height: "auto",
-    background:
-      "url(/docs/bg_img.jpg)",
+    background: "url(/docs/bg_img.jpg)",
     zIndex: 1,
-  }
+  },
+  nav: {
+    position: "static",
+  },
 }));
 
 export default function App() {
