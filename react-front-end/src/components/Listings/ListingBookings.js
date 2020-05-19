@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import fetchBookingsForListing from "../../helpers/fetchBookingsForListing";
 import BookingForListing from "./BookingForListing";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   modal: {
     display: "flex",
     alignItems: "center",
@@ -47,10 +47,10 @@ export default function ListingBookings(props) {
 
   useEffect(() => {
     fetchBookingsForListing(props.id)
-      .then((bookings) => {
+      .then(bookings => {
         setBookings(bookings);
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }, []);
 
   return (
@@ -87,7 +87,9 @@ export default function ListingBookings(props) {
             >
               {props.title}
             </Typography>
-            {bookings !== undefined && <BookingForListing key={bookings.id} bookings={bookings} />}
+            {bookings !== undefined && (
+              <BookingForListing key={bookings.id} bookings={bookings} />
+            )}
           </div>
         </Fade>
       </Modal>
