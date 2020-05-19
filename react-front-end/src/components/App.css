@@ -45,12 +45,14 @@ div.MuiBottomNavigation-root {
 
 .notifications {
   position: fixed;
-  top: 50px;
-  right: 0;
+  top: 72px;
+  right: 24px;
   background-color: #FFF;
   border: 1px solid #DDD;
   width: 20rem;
   border-radius: 10px;
+  z-index: 1;
+  opacity: 0.9;
 }
 
 .notification {

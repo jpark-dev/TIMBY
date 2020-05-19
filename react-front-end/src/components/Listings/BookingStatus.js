@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import confirmBooking from "../../helpers/confirmBooking";
 import declineBooking from "../../helpers/declineBooking";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
   },
@@ -27,20 +27,20 @@ export default function BookingStatus(props) {
   const [booking, setBooking] = useState(props.booking);
   const [status, setStatus] = useState(props.booking.status);
 
-  const confirm = (booking) => {
+  const confirm = booking => {
     confirmBooking(booking.id, booking.title, booking.user_id)
       .then(() => {
         setStatus("Confirmed");
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
-  const decline = (booking) => {
+  const decline = booking => {
     declineBooking(booking.id, booking.title, booking.user_id)
       .then(() => {
         setStatus("Declined");
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
   const classes = useStyles();
 
@@ -56,7 +56,7 @@ export default function BookingStatus(props) {
             variant="outlined"
             color="primary"
           >
-            {status}
+            {booking.status}
           </Button>
         )}
         {booking.status === "Declined" && (
@@ -65,7 +65,16 @@ export default function BookingStatus(props) {
             variant="outlined"
             color="secondary"
           >
-            {status}
+            {booking.status}
+          </Button>
+        )}
+        {booking.status === "Cancelled" && (
+          <Button
+            className={classes.fullWidthButton}
+            variant="outlined"
+            color="secondary"
+          >
+            {booking.status}
           </Button>
         )}
         {booking.status === "Pending" && (

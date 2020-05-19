@@ -13,7 +13,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 
 import MyMapComponent from "../GoogleMaps";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   modal: {
     display: "flex",
     alignItems: "center",

@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import BookingStatus from "./BookingStatus";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     width: "280px",
     marginTop: "8px",
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BookingForListing(props) {
   const classes = useStyles();
 
-  const booking = props.bookings.map((booking) => {
+  const booking = props.bookings.map(booking => {
     return <BookingStatus key={booking.id} booking={booking} />;
   });
 

@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "100%",
     background:
-      "url(https://pixabay.com/get/52e3d4434e51a414f6da8c7dda35367b1d36d6e75357744f_1280.jpg)",
+      "url(/docs/bg_img.jpg)",
     zIndex: -1,
     paddingTop: "60px",
   },
