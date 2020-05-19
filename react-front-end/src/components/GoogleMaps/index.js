@@ -18,7 +18,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
           key={marker.key}
           position={{ lat: marker.lat, lng: marker.lng }}
           icon={{
-            url: 'https://raw.githubusercontent.com/headhuntar/TIMBY/marker-icon/react-front-end/public/icons/icon-48.png',
+            url: props.activeCard === (marker.key - 1) ? process.env.PUBLIC_URL + '/icons/icon-48-selected.png' : process.env.PUBLIC_URL + '/icons/icon-48.png',
           }}
           onClick={() => props.changeCard(marker.key)}
         />

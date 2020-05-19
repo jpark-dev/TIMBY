@@ -60,6 +60,7 @@ const Search = () => {
         markers={markers}
         defaultZoom={12}
         lat={49.24}
+        activeCard={activeCard}
         changeCard={changeCard}
       />
       <Box
