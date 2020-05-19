@@ -26,6 +26,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import StoreIcon from "@material-ui/icons/Store";
 import MenuIcon from "@material-ui/icons/Menu";
 import Badge from "@material-ui/core/Badge";
+import SettingsIcon from '@material-ui/icons/Settings';
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 const useStyles = makeStyles(theme => ({
@@ -53,6 +54,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function App() {
   const classes = useStyles();
+
   const [state, setState] = useState(false);
   const [title, setTitle] = useState("TIMBY");
   const [invisible, setInvisible] = useState(false);
@@ -109,20 +111,6 @@ export default function App() {
         </Typography>
       </AppBar>
       <List>
-        <Link to="/profile" className={classes.link}>
-          <ListItem
-            button
-            key="profile"
-            onClick={() => {
-              setTitle("Profile");
-            }}
-          >
-            <ListItemIcon>
-              <AccountCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
-        </Link>
         <Link to="/search" className={classes.link}>
           <ListItem
             button
@@ -165,6 +153,20 @@ export default function App() {
             <ListItemText primary="Listings" />
           </ListItem>
         </Link>
+        <Link to="/profile" className={classes.link}>
+          <ListItem
+            button
+            key="profile"
+            onClick={() => {
+              setTitle("Profile");
+            }}
+          >
+            <ListItemIcon>
+              <AccountCircleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+        </Link>
         <Link to="/settings" className={classes.link}>
           <ListItem
             button
@@ -174,7 +176,7 @@ export default function App() {
             }}
           >
             <ListItemIcon>
-              <StoreIcon />
+              <SettingsIcon />
             </ListItemIcon>
             <ListItemText primary="Settings" />
           </ListItem>
