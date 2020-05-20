@@ -23,7 +23,8 @@ import getTourRating from '../../helpers/getTourRating';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    minWidth: window.innerWidth - 32
   },
   large: {
     width: theme.spacing(7),
