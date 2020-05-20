@@ -10,6 +10,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import CloseIcon from "@material-ui/icons/Close";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import EventAvailableIcon from "@material-ui/icons/EventAvailable";
 
 import MyMapComponent from "../GoogleMaps";
 
@@ -34,6 +35,10 @@ const useStyles = makeStyles(theme => ({
   closeButton: {
     display: "flex",
     justifyContent: "flex-end",
+  },
+  verticalCenter: {
+    display: "flex",
+    placeItems: "center",
   },
 }));
 
@@ -60,7 +65,12 @@ export default function TransitionsModal(props) {
 
   return (
     <div>
-      <Button size="small" color="primary" variant="contained" onClick={handleOpenModal}>
+      <Button
+        size="small"
+        color="primary"
+        variant="contained"
+        onClick={handleOpenModal}
+      >
         Details
       </Button>
       <Modal
@@ -110,7 +120,13 @@ export default function TransitionsModal(props) {
                 {props.description}
               </Typography>
               <div className={classes.tourDetails}>
-                <Typography variant="body2" component="p">
+                <Typography
+                  variant="body2"
+                  component="p"
+                  className={classes.verticalCenter}
+                >
+                  <EventAvailableIcon />
+                  &nbsp;
                   {tourDateTime.toLocaleString("en-US", {
                     year: "numeric",
                     month: "short",
@@ -120,8 +136,13 @@ export default function TransitionsModal(props) {
                     hour12: true,
                   })}
                 </Typography>
-                <Typography variant="body2" component="p">
-                  <AccessTimeIcon /> {props.duration / 60} hrs
+                <Typography
+                  variant="body2"
+                  component="p"
+                  className={classes.verticalCenter}
+                >
+                  <AccessTimeIcon /> &nbsp;
+                  <span>{props.duration / 60} hrs</span>
                 </Typography>
               </div>
             </CardContent>

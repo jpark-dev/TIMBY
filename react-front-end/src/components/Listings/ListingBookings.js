@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Backdrop from "@material-ui/core/Backdrop";
-import Box from '@material-ui/core/Box';
+import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import CloseIcon from "@material-ui/icons/Close";
 import Fade from "@material-ui/core/Fade";
@@ -36,8 +36,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "12px 0px"
-  }
+    padding: "12px 0px",
+    fontStyle: "italic"
+  },
 }));
 
 export default function ListingBookings(props) {
@@ -107,7 +108,7 @@ export default function ListingBookings(props) {
               variant="h5"
               color="textSecondary"
             >
-              <Box fontStyle="italic">{props.title}</Box>
+              {props.title}
             </Typography>
             {bookings !== undefined && (
               <BookingForListing key={bookings.id} bookings={bookings} />
