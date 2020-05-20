@@ -54,34 +54,34 @@ export default function BookingStatus(props) {
         <Typography className={classes.alignCenter} >{booking.name}</Typography>
       </Grid>
       <Grid item xs={7}>
-        {booking.status === "Confirmed" && (
+        {status === "Confirmed" && (
           <Button
             className={classes.fullWidthButton}
             variant="outlined"
             color="primary"
           >
-            {booking.status}
+            {status}
           </Button>
         )}
-        {booking.status === "Declined" && (
+        {status === "Declined" && (
           <Button
             className={classes.fullWidthButton}
             variant="outlined"
             color="secondary"
           >
-            {booking.status}
+            {status}
           </Button>
         )}
-        {booking.status === "Cancelled" && (
+        {status === "Cancelled" && (
           <Button
             className={classes.fullWidthButton}
             variant="outlined"
             color="secondary"
           >
-            {booking.status}
+            {status}
           </Button>
         )}
-        {booking.status === "Pending" && (
+        {status === "Pending" && (
           <>
             <Button
               className={classes.button}
