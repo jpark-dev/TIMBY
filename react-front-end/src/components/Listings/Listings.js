@@ -10,12 +10,12 @@ import fetchListingsForUser from "../../helpers/fetchListingsForUser";
 
 const useStyles = makeStyles(theme => ({
   newButton: {
-    margin: theme.spacing(8, 0, 1),
+    margin: theme.spacing(10, 0, 0),
     width: "100%",
     position: "relative",
     fontSize: "xx-large",
     fontWeight: "bold",
-    backgroundColor: "rgba(63, 81, 181, 0.5)",
+    backgroundColor: "rgba(63, 81, 181, 0.3)",
   },
   bgCover: {
     width: "90%",

@@ -60,7 +60,7 @@ export default function TransitionsModal(props) {
 
   return (
     <div>
-      <Button size="small" color="primary" onClick={handleOpenModal}>
+      <Button size="small" color="primary" variant="contained" onClick={handleOpenModal}>
         Details
       </Button>
       <Modal
