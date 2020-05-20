@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import confirmBooking from "../../helpers/confirmBooking";
 import declineBooking from "../../helpers/declineBooking";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -21,6 +22,9 @@ const useStyles = makeStyles(theme => ({
   verticalCenter: {
     alignSelf: "center",
   },
+  alignCenter: {
+    textAlign: "center",
+  }
 }));
 
 export default function BookingStatus(props) {
@@ -47,7 +51,7 @@ export default function BookingStatus(props) {
   return (
     <Grid container>
       <Grid item xs={5} className={classes.verticalCenter}>
-        {booking.name}
+        <Typography className={classes.alignCenter} >{booking.name}</Typography>
       </Grid>
       <Grid item xs={7}>
         {booking.status === "Confirmed" && (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Backdrop from "@material-ui/core/Backdrop";
+import Box from '@material-ui/core/Box';
 import Button from "@material-ui/core/Button";
 import CloseIcon from "@material-ui/icons/Close";
 import Fade from "@material-ui/core/Fade";
@@ -12,7 +13,7 @@ import fetchBookingsForListing from "../../helpers/fetchBookingsForListing";
 import BookingForListing from "./BookingForListing";
 
 const useStyles = makeStyles(theme => ({
-  modal: {
+  center: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -28,6 +29,15 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 2, 2),
     outline: "none",
   },
+  flexEnd: {
+    justifyContent: "flex-end",
+  },
+  title: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "12px 0px"
+  }
 }));
 
 export default function ListingBookings(props) {
@@ -54,12 +64,19 @@ export default function ListingBookings(props) {
   }, []);
 
   return (
-    <>
-      <Button className={'current-bookings'} onClick={handleOpenModal}>Current bookings: {bookingCnt}</Button>
+    <div>
+      <Button
+        size="small"
+        variant="contained"
+        color="primary"
+        onClick={handleOpenModal}
+      >
+        Current bookings: {bookingCnt}
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
+        className={classes.center}
         open={open}
         onClose={handleCloseModal}
         closeAfterTransition
@@ -71,21 +88,26 @@ export default function ListingBookings(props) {
         <Fade in={open}>
           <div className={classes.card}>
             <div className={classes.closeButton}>
-              <Button className={'close-button'} onClick={handleCloseModal}>
+              <Typography variant="h6" component="h2">
+                Current Bookings
+              </Typography>
+              <Button
+                size="small"
+                className={"close-button"}
+                onClick={handleCloseModal}
+              >
                 <CloseIcon />
               </Button>
             </div>
-            <Typography gutterBottom variant="h5" component="h2">
-              Current Bookings
-            </Typography>
+            <hr />
             <Typography
+              className={classes.title}
               component="p"
               gutterBottom
-              variant="body2"
+              variant="h5"
               color="textSecondary"
-              component="p"
             >
-              {props.title}
+              <Box fontStyle="italic">{props.title}</Box>
             </Typography>
             {bookings !== undefined && (
               <BookingForListing key={bookings.id} bookings={bookings} />
@@ -93,6 +115,6 @@ export default function ListingBookings(props) {
           </div>
         </Fade>
       </Modal>
-    </>
+    </div>
   );
 }
