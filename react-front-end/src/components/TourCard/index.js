@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     position: 'absolute',
-    width: 400,
+    width: '100%',
     top: '25vh',
     backgroundColor: 'transparent',
   },
