@@ -11,6 +11,7 @@ const App = Express();
 const BodyParser = require('body-parser');
 const cors = require('cors');
 App.use(cors());
+App.options('*', cors());
 const webpush = require('web-push');
 
 // Queries
