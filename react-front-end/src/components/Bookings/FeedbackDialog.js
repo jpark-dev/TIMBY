@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 import submitFeedback from '../../helpers/submitFeedback';
+import notifyUser from '../../helpers/notifyUser';
 
 
 
@@ -64,6 +65,7 @@ export default function FormDialog(props) {
           <Button onClick={() => {
             submitFeedback(props.id, rating, comment)
               .then(() => {
+                notifyUser(props.host_id, `A user left feedback for ${props.title}: ${comment}`)
                 props.setSnackBarOpen(true);
                 handleClose();
               })
