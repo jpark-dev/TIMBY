@@ -30,6 +30,7 @@ const BookingModal = (props) => {
               parseInt(localStorage.getItem('userID')),
               props.title
             )
+            .then(() => props.close());
           }}
         >
           <EventAvailableIcon /> Book Event
