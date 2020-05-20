@@ -50,7 +50,7 @@ img.user-pic{
   height: 110px;
   border-radius: 100%;
   background: rgba(255,255,255,0.7);
-  border: 5px solid rgba(255,255,255,1);
+  border: 2px solid rgba(255,255,255,1);
 }
 
 h4.name{

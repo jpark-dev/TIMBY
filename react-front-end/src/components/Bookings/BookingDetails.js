@@ -10,6 +10,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import CloseIcon from '@material-ui/icons/Close';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 
 import MyMapComponent from '../GoogleMaps';
 import ConfirmDialog from './ConfirmDialog';
@@ -32,11 +33,16 @@ const useStyles = makeStyles((theme) => ({
   tourDetails: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '10px 0'
+    margin: '10px 0',
+    alignItems: 'center'
   },
   closeButton: {
     display: 'flex',
     justifyContent: 'flex-end'
+  },
+  verticalCenter: {
+    display: 'flex',
+    placeItems: 'center'
   }
 }));
 
@@ -105,11 +111,12 @@ export default function TransitionsModal(props) {
                 Hosted By {props.host_name} ({props.host_phone})
               </Typography>
               <div className={classes.tourDetails}>
-                <Typography variant="body2" component="p">
+                <Typography variant="body2" component="p" className={classes.verticalCenter}>
+                <EventAvailableIcon />
                   {tourDateTime.toLocaleString("en-US", {year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: true})}
                 </Typography>
-                <Typography variant="body2" component="p">
-                  <AccessTimeIcon /> {props.duration / 60} hrs
+                <Typography variant="body2" component="p" className={classes.verticalCenter}>
+                  <AccessTimeIcon /> &nbsp;<span>{props.duration / 60} hrs</span>
                 </Typography>
               </div>
               <div className={classes.tourDetails}>

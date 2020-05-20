@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
+    color: "black",
   },
   transparent: {
     backgroundColor: "transparent",
@@ -62,7 +63,17 @@ const useStyles = makeStyles(theme => ({
   },
   nav: {
     position: "static",
+    backgroundImage: "linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)",
+    padding: "10px 0px"
   },
+  userPic: {
+    width: "80px",
+    height: "80px",
+    borderRadius: "100%",
+    background: "rgba(255,255,255,0.7)",
+    border: "2px solid rgba(255,255,255,1)",
+    marginTop: "10px"
+  }
 }));
 
 export default function App() {
@@ -119,7 +130,7 @@ export default function App() {
         <Typography variant="h6" align="center" className={classes.title}>
           <p>Welcome, {name}</p>
           <a href="/profile">
-            <img src={avatar} alt="" className="user-pic" />
+            <img src={avatar} alt="" className={classes.userPic}/>
           </a>
         </Typography>
       </AppBar>

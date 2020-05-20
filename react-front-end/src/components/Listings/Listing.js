@@ -5,12 +5,11 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import ScheduleIcon from "@material-ui/icons/Schedule";
+import EventAvailableIcon from "@material-ui/icons/EventAvailable";
 import Typography from "@material-ui/core/Typography";
 
 import ListingDetails from "./ListingDetails";
 import ListingBookings from "./ListingBookings";
-
 import fetchMediaForTour from "../../helpers/fetchMediaForTour";
 
 const useStyles = makeStyles({
@@ -88,7 +87,7 @@ export default function ImgMediaCard(props) {
             </Typography>
           </div>
           <div className={classes.inline}>
-            <ScheduleIcon />
+            <EventAvailableIcon />
             &nbsp;
             <Typography variant="body2" component="span" className={classes.verticalCenter}>
               {tourDateTime.toLocaleString("en-US", {
