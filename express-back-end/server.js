@@ -10,6 +10,7 @@ const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
 const cors = require('cors');
+App.use(cors());
 const webpush = require('web-push');
 
 // Queries
@@ -32,7 +33,6 @@ const listingRoutes = require("./routes/listings");
 App.use(BodyParser.urlencoded({ extended: true }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
-App.use(cors());
 
 // Set private and public push keys
 webpush.setVapidDetails(process.env.WEB_PUSH_CONTACT, process.env.PUBLIC_VAPID_KEY, process.env.PRIVATE_VAPID_KEY)
