@@ -19,6 +19,74 @@ TIMBY was collaboratively built with [Allen Li](https://github.com/AllenLiDev) a
 
 ## Snapshots
 
+!["Homescreen"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-home-screen.jpg)
+
+- Timby can be added to your phone as app icon.
+
+- Works just like any apps on your phone.
+
+!["Splash Screen"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-splash-screen.jpg)
+
+- Once launched, PWA allows to have a splash screen just like ordinary apps installed.
+
+- It then shows the app components afterwards.
+
+!["Main Page"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-search.jpg)
+
+- You can navigate with the Google Maps using your hand gestures on your screen.
+
+- Shows the markers with available tours.
+
+- Each tour contains tour data, along with a booking function via Book button.
+
+!["Side Menubar"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-menu.jpg)
+
+- By clicking the drawer button on the top left, a side nav bar appears.
+
+- Can navigate to different pages.
+
+!["Profile Page"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-profile.jpg)
+
+- Profile page with user data.
+
+- Includes the location, email and total tours created as a host.
+
+!["Listing Confirm"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-listing-confirm.jpg)
+
+- Hosts can either accept/decline requests form tourists to join the tour.
+
+- The modal shows the current status of the listing associated with user requests.
+
+!["Push Notifications"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-push-notifications.jpg)
+
+- When tourists requests to join the tour, the host receives a push notification.
+
+- When hosts accept a tourist request to join, the tourist receives a posh notification.
+
+- It also works as a native push notification on your phone.
+
+!["Feedback"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-feedback.jpg)
+
+- Tourists can rate the completed tour and leave comments.
+
+!["Feedback"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-feedback-success.jpg)
+
+- Once submited, it shows a popup notice to show that it's successfully submitted.
+
+!["Bookings Page"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-bookings.jpg)
+
+- Each card contains the description of each tour requested by the tourist.
+
+- Shows current booking status of each tour.
+
+- Allows to see details.
+
+!["Booking Details"](https://github.com/jpark-dev/TIMBY/blob/master/docs/timby-booking-details.jpg)
+
+- The modal shows a google map with a marker of the tour description.
+
+- Allows to leave feedback.
+
 ## Dependencies
 
 Back-end
@@ -92,6 +160,7 @@ Get your map API key from [Google Maps](https://developers.google.com/maps/docum
 5. Visit `http://localhost:3000/`
 
 6. Open two browsers and set each user login status in the browser consoles:
+
 ```
 -- Browser 1 --
 Log in as Allen (local guide)
@@ -103,11 +172,12 @@ console > localStorage.setItem('userID', 6);
 ```
 
 7. Connect your mobile device and set it as an App icon
+
 - Open a URL address of a PWA you want to install in your browser.
 - Open your browser’s settings.
 - Scroll down and tap Add to Home screen.
 - Confirm by tapping Add.
-- Run TIMBY on your phone! 
+- Run TIMBY on your phone!
 
 ## Testing
 
